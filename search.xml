@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo-NexT主题添加搜索功能</title>
+    <url>/2020/03/30/Hexo-NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<h3 id="1-安装search插件"><a href="#1-安装search插件" class="headerlink" title="1. 安装search插件"></a>1. 安装search插件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-在主题目录-theme-next-config-yml文件中新增如下配置："><a href="#2-在主题目录-theme-next-config-yml文件中新增如下配置：" class="headerlink" title="2. 在主题目录/theme/next/_config.yml文件中新增如下配置："></a>2. 在主题目录/theme/next/_config.yml文件中新增如下配置：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-在主题目录-theme-next-config-yml文件中搜索-local-search-将-enable-修改为-true"><a href="#3-在主题目录-theme-next-config-yml文件中搜索-local-search-将-enable-修改为-true" class="headerlink" title="3. 在主题目录/theme/next/_config.yml文件中搜索 local_search , 将 enable 修改为 true"></a>3. 在主题目录/theme/next/_config.yml文件中搜索 <code>local_search</code> , 将 <code>enable</code> 修改为 <code>true</code></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-重新编译站点即可"><a href="#4-重新编译站点即可" class="headerlink" title="4. 重新编译站点即可"></a>4. 重新编译站点即可</h3>]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于IE8的getElementById不再支持name属性</title>
     <url>/2020/03/30/%E5%85%B3%E4%BA%8EIE8%E7%9A%84getElementById%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81name%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<h3 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 这两天发现公司内部一个比较老旧的系统，突然间无法正常使用，页面脚本错误：getElementById（）不是一个对象。</span><br><span class="line">当前使用的IE浏览器版本为8</span><br><span class="line">2. 经过页面调试，发现页面获取对象使用的方式为：document.getElementById(<span class="string">"elementName"</span>).avlue</span><br><span class="line">3. 看到上面的代码，第一反应是这肯定有问题，因为根据getElementById的定义是不允许通过传入elementName获取元素对象的，</span><br><span class="line">但是仔细思考后发现，这个系统已经使用好多年，肯定不是getElementById问题</span><br></pre></td></tr></table></figure>
