@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ML-知识体系</title>
+    <url>/2020/03/30/ML-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<h3 id="机器学习知识图谱"><a href="#机器学习知识图谱" class="headerlink" title="机器学习知识图谱"></a>机器学习知识图谱</h3><ul>
+<li><p>机器学习包含多交叉学科，同时也在很多方面得到应用，如自然语言处理、图像处理、数据挖掘、推荐系统领域等。</p>
+</li>
+<li><p>机器学习包含监督学习、无监督学习、半监督学习、强化学习、深度学习、迁移学习等，还有各种工具和框架的应用，因此Machine Learning的过程也是漫长而有趣的。<br><img src="/uploads/ML/ML-01.jpg" alt="ML-01"></p>
+</li>
+<li><p>下图为开发者平台CSDN上王小雷整理的机器学习算法汇总，其中包含很多机器学习算法，知识体系较为庞大。<br><img src="/uploads/ML/ML-02.jpg" alt="ML-02"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ML-机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo-NexT主题添加搜索功能</title>
     <url>/2020/03/30/Hexo-NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
     <content><![CDATA[<h3 id="1-安装search插件"><a href="#1-安装search插件" class="headerlink" title="1. 安装search插件"></a>1. 安装search插件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
