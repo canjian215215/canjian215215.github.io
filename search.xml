@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>日志加密-默认</title>
+    <url>/2020/03/31/%E6%97%A5%E5%BF%97%E5%8A%A0%E5%AF%86-%E9%BB%98%E8%AE%A4/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容."><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="您好, 这里需要密码.i" /><label>您好, 这里需要密码.i</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="336ff825f405ab97aacc8eedb64ff295d74806f9cae4a02c8b0e2ba872ccdbbe">73a60d98927efd31431094c17c0c8d48b5028f2931e50f9c66cbf5459ebe409b3c355c0e8af0d9140932818b0d233f637be0b29ecfd66edf074d2d191acf6a90</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>个人日志</category>
+      </categories>
+      <tags>
+        <tag>个人日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志加密-高级</title>
+    <url>/2020/03/31/%E6%97%A5%E5%BF%97%E5%8A%A0%E5%AF%86-%E9%AB%98%E7%BA%A7/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容."><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="您好, 这里需要密码." /><label>您好, 这里需要密码.</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="bf5747cd14de486a83767349321788cd52546966914ec08752da585de8352df7">a51105a81ca68344bd28769509832b6e169c997dd22f419c31c5224190a46d03f4734efdbfc65fe3c3abebb037b7583e0b3958cf82edaad1d66866da97fc67e9</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>个人日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志加密-普通</title>
+    <url>/2020/03/31/%E6%97%A5%E5%BF%97%E5%8A%A0%E5%AF%86-%E6%99%AE%E9%80%9A/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容."><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="您好, 这里需要密码.i" /><label>您好, 这里需要密码.i</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="f8a94a0832ee2f9c617c9a56b66d9d1472ec62553b64d6615643d4d816359d8b">a51105a81ca68344bd28769509832b6e0afc76f5b1a74132229b73553985e10188dd3a81ec777eab602c0a090bdae6e8d706445c41b35f0d2652684d57d50f8e</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>个人日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ML-知识体系</title>
     <url>/2020/03/30/ML-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
     <content><![CDATA[<h3 id="机器学习知识图谱"><a href="#机器学习知识图谱" class="headerlink" title="机器学习知识图谱"></a>机器学习知识图谱</h3><ul>
