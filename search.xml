@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CNN-卷积神经网络参数计算</title>
+    <url>/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<p><strong>卷积神经网络中的卷积过程的了解，对整个卷积神经网络的了解至关重要以下是个人认为比较好的入门讲解：</strong></p>
+<blockquote>
+<ul>
+<li>[ 卷积神经网络介绍1 ]: <a href="https://www.cnblogs.com/hejunlin1992/p/8367266.html" target="_blank" rel="noopener">https://www.cnblogs.com/hejunlin1992/p/8367266.html</a></li>
+<li>[ 卷积神经网络介绍2 ]: <a href="https://www.cnblogs.com/hejunlin1992/p/8367317.html" target="_blank" rel="noopener">https://www.cnblogs.com/hejunlin1992/p/8367317.html</a></li>
+<li>[ 卷积神经网络介绍3 ]: <a href="https://www.cnblogs.com/hejunlin1992/p/8367344.html" target="_blank" rel="noopener">https://www.cnblogs.com/hejunlin1992/p/8367344.html</a></li>
+<li>[  卷积基础 ]: <a href="https://mp.weixin.qq.com/s?__biz=MzUyMjE2MTE0Mw==&amp;mid=2247485632&amp;idx=1&amp;sn=a0b842d387685567f9ff94f3bd1832c2&amp;chksm=f9d15658cea6df4ed3f24e4071228b780a8107314474428563e562152b9be8ab8428d1fd62b7&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzUyMjE2MTE0Mw==&amp;mid=2247485632&amp;idx=1&amp;sn=a0b842d387685567f9ff94f3bd1832c2&amp;chksm=f9d15658cea6df4ed3f24e4071228b780a8107314474428563e562152b9be8ab8428d1fd62b7&amp;scene=21#wechat_redirect</a></li>
+<li>[ 卷积神经网络-卷积与池化 ]: <a href="https://www.cnblogs.com/zf-blog/p/6075286.html" target="_blank" rel="noopener">https://www.cnblogs.com/zf-blog/p/6075286.html</a></li>
+<li>[ 卷积神经网络中的参数计算 ]: <a href="https://www.cnblogs.com/hejunlin1992/p/7624807.html" target="_blank" rel="noopener">https://www.cnblogs.com/hejunlin1992/p/7624807.html</a></li>
+<li>[ 卷积神经网络与反卷积 ]: <a href="https://buptldy.github.io/2016/10/29/2016-10-29-deconv/" target="_blank" rel="noopener">https://buptldy.github.io/2016/10/29/2016-10-29-deconv/</a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>ML-机器学习</category>
+      </categories>
+      <tags>
+        <tag>CNN-卷积神经网络</tag>
+        <tag>卷积计算过程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ML-知识体系</title>
     <url>/2020/03/30/ML-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
     <content><![CDATA[<h3 id="机器学习知识图谱"><a href="#机器学习知识图谱" class="headerlink" title="机器学习知识图谱"></a>机器学习知识图谱</h3><ul>
