@@ -46,6 +46,9 @@
 </li>
 <li><p>根据组织代码查询</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   org:spring-cloud</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[ GitHub搜索帮助 ]: <a href="https://help.github.com/cn/github/searching-for-information-on-github/searching-on-github" target="_blank" rel="noopener">https://help.github.com/cn/github/searching-for-information-on-github/searching-on-github</a></p>
+</blockquote>
 </li>
 </ol>
 ]]></content>
