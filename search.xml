@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GitHub-高级搜索</title>
+    <url>/2020/04/01/GitHub-%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h3 id="1-GitHub初级搜索使用"><a href="#1-GitHub初级搜索使用" class="headerlink" title="1. GitHub初级搜索使用"></a>1. GitHub初级搜索使用</h3><ol>
+<li><p>直接在搜索框里输入要检索的内容，然后不断的在列表里翻页查找，如：<br><img src="/uploads/GitHub/qb_01.png" alt="基础查询1"></p>
+</li>
+<li><p>增加左侧的语言过滤项，如：<br><img src="/uploads/GitHub/qb_02.png" alt="Languages过滤"></p>
+</li>
+<li><p>修改一下列表排序方式，如：<br><img src="/uploads/GitHub/qb_03.png" alt="Sort过滤"></p>
+</li>
+</ol>
+<h3 id="2-GitHub高级搜索使用"><a href="#2-GitHub高级搜索使用" class="headerlink" title="2. GitHub高级搜索使用"></a>2. GitHub高级搜索使用</h3><ol>
+<li><p>根据仓库标题检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:name 关键字</span><br></pre></td></tr></table></figure>
+<p>如：<br><img src="/uploads/GitHub/qb_04.png" alt="name过滤"></p>
+</li>
+<li><p>根据项目描述检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:descripton 关键词</span><br></pre></td></tr></table></figure>
+<p>如：<br><img src="/uploads/GitHub/qb_05.png" alt="descripton过滤"></p>
+</li>
+<li><p>根据项目README文件检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:readme 关键词</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据stars数量检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   stars:&gt; 数字 关键字</span><br><span class="line">- 备注：不加比较呼号的时候，表示精确匹配数字，这一般比较困难（不常用）</span><br><span class="line">-   stars:1000..2000 关键词</span><br><span class="line">- - 表示查询指定数字区间的信息</span><br></pre></td></tr></table></figure>
+<p>如：检索star数大于3000 的 Spring Cloud 仓库<br><img src="/uploads/GitHub/qb_06.png" alt="descripton过滤"></p>
+</li>
+<li><p>根据fork数量检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   forks:&gt; 数字 关键字</span><br><span class="line">-   forks:1000..2000</span><br><span class="line">- 备注：原理和stars相同</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据项目大小检索，即占用磁盘容量</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   size:&gt;=5000 关键字</span><br><span class="line">- 备注：这里的数字代表 K， 即5000 代表 5M</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据仓库更新维护时间</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- 我们在确认是否要使用一些开源产品，框架的时候，是否继续维护是很重要的一点。如果已经过时没人维护的东西，踩了坑就不好办了。而在 GitHub 上找项目的时候，不再需要每个都点到项目里看看最近 push 的时间，直接在搜索框即可完成。</span><br><span class="line">-   pushed:&gt;2019-08-09 Spring Cloud</span><br></pre></td></tr></table></figure></li>
+<li><p>根据项目LICENSE检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   license:apache-2.0 Spring Cloud</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据仓库语言检索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   language:Python 关键词</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据人员查询</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   user:joshlong</span><br><span class="line">-   user:joshlong language:java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据组织代码查询</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   org:spring-cloud</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub-高级检索</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CNN-卷积神经网络参数计算</title>
     <url>/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/</url>
     <content><![CDATA[<p><strong>卷积神经网络中的卷积过程的了解，对整个卷积神经网络的了解至关重要以下是个人认为比较好的入门讲解：</strong></p>
