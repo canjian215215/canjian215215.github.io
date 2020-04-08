@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>VUE修改对象或数组属性</title>
+    <url>/2020/04/09/VUE%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%88%96%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p><strong><em>由于VUE是响应式的设计框架，所以我们通过普通的方式修改对象或数组内的属性是无法动态改变dom内容，此时我们应该通过如下方式来修改：</em></strong></p>
+<h3 id="一、修改属性"><a href="#一、修改属性" class="headerlink" title="一、修改属性"></a>一、修改属性</h3><ul>
+<li><strong>1）、对象修改方式</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$set</span>(this.data, <span class="string">"key"</span>,  value)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.set(this.data, <span class="string">"key"</span>, value)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2)、数组修改方式</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$set</span>(this.data, index,  value)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.set(this.data, index, value)</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、删除属性"><a href="#二、删除属性" class="headerlink" title="二、删除属性"></a>二、删除属性</h3><ul>
+<li><strong>1）、对象修改方式</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$delete</span>(this.data, <span class="string">"key"</span>)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.delete(this.data, <span class="string">"key"</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>2）、数组修改方式</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$delete</span>(this.data, index)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.delete(this.data, index)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>VUE</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>uni-app</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitHub-高级搜索</title>
     <url>/2020/04/01/GitHub-%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2/</url>
     <content><![CDATA[<h3 id="1-GitHub初级搜索使用"><a href="#1-GitHub初级搜索使用" class="headerlink" title="1. GitHub初级搜索使用"></a>1. GitHub初级搜索使用</h3><ol>
