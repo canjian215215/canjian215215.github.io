@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Momentjs日期库使用</title>
+    <url>/2020/04/09/Momentjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><strong><em>说明：<br>一款强大的前端日期处理库</em></strong></p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><ul>
+<li><p><strong>1.日期格式化</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment().format(<span class="string">'MMMM Do YYYY, h:mm:ss a'</span>); // 四月 9日 2020, 8:37:16 早上</span><br><span class="line">moment().format(<span class="string">'dddd'</span>);                    // 星期四</span><br><span class="line">moment().format(<span class="string">"MMM Do YY"</span>);               // 4月 9日 20</span><br><span class="line">moment().format(<span class="string">'YYYY [escaped] YYYY'</span>);     // 2020 escaped 2020</span><br><span class="line">moment().format();                          // 2020-04-09T08:37:16+08:00</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>2.相对时间</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment(<span class="string">"20111031"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); // 8 年前</span><br><span class="line">moment(<span class="string">"20120620"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); // 8 年前</span><br><span class="line">moment().startOf(<span class="string">'day'</span>).fromNow();        // 9 小时前</span><br><span class="line">moment().endOf(<span class="string">'day'</span>).fromNow();          // 15 小时内</span><br><span class="line">moment().startOf(<span class="string">'hour'</span>).fromNow();       // 37 分钟前</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>3.日历时间</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment().subtract(10, <span class="string">'days'</span>).calendar(); // 2020/03/30</span><br><span class="line">moment().subtract(6, <span class="string">'days'</span>).calendar();  // 上星期五08:37</span><br><span class="line">moment().subtract(3, <span class="string">'days'</span>).calendar();  // 上星期一08:37</span><br><span class="line">moment().subtract(1, <span class="string">'days'</span>).calendar();  // 昨天08:37</span><br><span class="line">moment().calendar();                      // 今天08:37</span><br><span class="line">moment().add(1, <span class="string">'days'</span>).calendar();       // 明天08:37</span><br><span class="line">moment().add(3, <span class="string">'days'</span>).calendar();       // 下星期日08:37</span><br><span class="line">moment().add(10, <span class="string">'days'</span>).calendar();      // 2020/04/19</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>4.多语言支持</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment.locale();         // zh-cn</span><br><span class="line">moment().format(<span class="string">'LT'</span>);   // 08:37</span><br><span class="line">moment().format(<span class="string">'LTS'</span>);  // 08:37:16</span><br><span class="line">moment().format(<span class="string">'L'</span>);    // 2020/04/09</span><br><span class="line">moment().format(<span class="string">'l'</span>);    // 2020/4/9</span><br><span class="line">moment().format(<span class="string">'LL'</span>);   // 2020年4月9日</span><br><span class="line">moment().format(<span class="string">'ll'</span>);   // 2020年4月9日</span><br><span class="line">moment().format(<span class="string">'LLL'</span>);  // 2020年4月9日早上8点37分</span><br><span class="line">moment().format(<span class="string">'lll'</span>);  // 2020年4月9日 08:37</span><br><span class="line">moment().format(<span class="string">'LLLL'</span>); // 2020年4月9日星期四早上8点37分</span><br><span class="line">moment().format(<span class="string">'llll'</span>); // 2020年4月9日星期四 08:37</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>官网应用地址<br>[ Momentjs官网 ]: <a href="http://momentjs.cn/" target="_blank" rel="noopener">http://momentjs.cn/</a> Momentjs</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>Jscript日期处理库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VUE修改对象或数组属性</title>
     <url>/2020/04/09/VUE%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%88%96%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p><strong><em>由于VUE是响应式的设计框架，所以我们通过普通的方式修改对象或数组内的属性是无法动态改变dom内容，此时我们应该通过如下方式来修改：</em></strong></p>
