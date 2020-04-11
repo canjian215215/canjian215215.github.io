@@ -1,6 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Dayjs日期库使用</title>
+    <url>/2020/04/11/Dayjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><strong>dayjs是一个轻量的处理时间和日期的 JavaScript 库，这里是dayjs的github网址<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2lhbWt1bi9kYXlqcw==">https://github.com/iamkun/dayjs<i class="fa fa-external-link-alt"></i></span></strong></p>
+<h3 id="Dayjs好处"><a href="#Dayjs好处" class="headerlink" title="Dayjs好处"></a>Dayjs好处</h3><ul>
+<li>🕒 和Moment.js有着相同的API和模式</li>
+<li>💪 不可变、持久性</li>
+<li>🔥 提供链式调用</li>
+<li>🌐 国际化标准</li>
+<li>📦 超小的压缩体积，仅仅有2kb左右</li>
+<li>👫 极大多数的浏览器兼容</li>
+</ul>
+<h3 id="Dayjs安装"><a href="#Dayjs安装" class="headerlink" title="Dayjs安装"></a>Dayjs安装</h3><p><em>NPM：</em></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install dayjs --save</span><br><span class="line"></span><br><span class="line">var dayjs = require(<span class="string">'dayjs'</span>);</span><br><span class="line">dayjs().format();</span><br></pre></td></tr></table></figure>
+
+<p><em>CDN:</em></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/dayjs"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  dayjs().format();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p><strong>说明：</strong></p>
+<ul>
+<li><strong><em>API中文文档<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2lhbWt1bi9kYXlqcy9ibG9iL21hc3Rlci9kb2NzL3poLWNuL0FQSS1yZWZlcmVuY2UubWQ=">https://github.com/iamkun/dayjs/blob/master/docs/zh-cn/API-reference.md<i class="fa fa-external-link-alt"></i></span></em></strong></li>
+<li><strong>*<font style='color:red;'>Day.js 的返回值都是新的 Dayjs</font>对象*</strong></li>
+</ul>
+<h3 id="Dayjs-API使用"><a href="#Dayjs-API使用" class="headerlink" title="Dayjs API使用"></a>Dayjs API使用</h3><hr>
+<h4 id="1-Dayjs解析相关API"><a href="#1-Dayjs解析相关API" class="headerlink" title="1.Dayjs解析相关API"></a>1.Dayjs解析相关API</h4><p>直接运行 dayjs()，得到包含当前时间和日期的 Dayjs 对象</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs()  //返回当前时间 Tue, 28 May 2019 05:57:34 GMT</span><br></pre></td></tr></table></figure>
+<p>可以解析传入的一个标准的ISO 8601时间字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(<span class="string">'1995-12-25'</span>) //Sun, 24 Dec 1995 16:00:00 GMT</span><br></pre></td></tr></table></figure>
+<p>可以解析传入的一个 Javascript Date 对象</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(new Date(2020,4,11)) //Mon, 17 Sep 2018 16:00:00 GMT</span><br></pre></td></tr></table></figure>
+<p>可以解析传入的一个 Unix 时间戳 (13 位数字)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(1318781876406) //Sun, 16 Oct 2011 16:17:56 GMT</span><br></pre></td></tr></table></figure>
+<p>Dayjs 对象是不可变的，如果您想获得一个对象的拷贝，请执行 .clone()。 向 dayjs() 里传入一个 Dayjs 对象也能实现同样的效果。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(Dayjs)</span><br><span class="line">dayjs().<span class="built_in">clone</span>()</span><br></pre></td></tr></table></figure>
+<p>检测当前 Dayjs 对象是否是一个有效的时间</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isValid()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="2-Dayjs获取和设置相关的API"><a href="#2-Dayjs获取和设置相关的API" class="headerlink" title="2.Dayjs获取和设置相关的API"></a>2.Dayjs获取和设置相关的API</h4><p>获取或设置年份</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().year() //2019</span><br><span class="line">dayjs().year(2000) //Sun, 28 May 2000 06:14:07 GMT</span><br></pre></td></tr></table></figure>
+<p>获取或设置月份。从 0 开始</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().month() //4 实际上5月</span><br><span class="line">dayjs().month(0) //Mon, 28 Jan 2019 06:15:25 GMT</span><br></pre></td></tr></table></figure>
+<p>获取或设置日期。从 1 开始</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().date() //28 当天是2019年5月28日</span><br><span class="line">dayjs().date(1) //Wed, 01 May 2019 06:17:04 GMT</span><br></pre></td></tr></table></figure>
+<p>获取或设置星期。从星期天 0 开始</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().day() //2 当天是星期二</span><br><span class="line">dayjs().day(0) //Sun, 26 May 2019 06:18:13 GMT 被强行设置为上周日</span><br></pre></td></tr></table></figure>
+<p>获取或设置小时</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().hour()  //14 当时为下午2点</span><br><span class="line">dayjs().hour(12) //Tue, 28 May 2019 04:21:30 GMT 不清楚</span><br></pre></td></tr></table></figure>
+<p>获取或设置分钟</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().minute() //22</span><br><span class="line">dayjs().minute(59) //Tue, 28 May 2019 06:59:50 GMT</span><br></pre></td></tr></table></figure>
+<p>获取或设置秒</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().second()</span><br><span class="line">dayjs().second(1)</span><br></pre></td></tr></table></figure>
+<p>获取或设置毫秒</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().millisecond()</span><br><span class="line">dayjs().millisecond(1)</span><br></pre></td></tr></table></figure>
+<p>获取从 Dayjs 对象中取到的信息 传入的单位 (unit) 对大小写不敏感</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().get(<span class="string">'month'</span>) //4</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">单位</th>
+<th align="center">缩写</th>
+<th align="right">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">date</td>
+<td align="center"></td>
+<td align="right">日期</td>
+</tr>
+<tr>
+<td align="left">day</td>
+<td align="center">d</td>
+<td align="right">星期几 (星期天 0, 星期六 6)</td>
+</tr>
+<tr>
+<td align="left">month</td>
+<td align="center">M</td>
+<td align="right">月 (一月 0, 十二月 11)</td>
+</tr>
+<tr>
+<td align="left">year</td>
+<td align="center">y</td>
+<td align="right">年</td>
+</tr>
+<tr>
+<td align="left">hour</td>
+<td align="center">h</td>
+<td align="right">时</td>
+</tr>
+<tr>
+<td align="left">minute</td>
+<td align="center">m</td>
+<td align="right">分</td>
+</tr>
+<tr>
+<td align="left">second</td>
+<td align="center">s</td>
+<td align="right">秒</td>
+</tr>
+<tr>
+<td align="left">millisecond</td>
+<td align="center">ms</td>
+<td align="right">毫秒</td>
+</tr>
+</tbody></table>
+<p>设置时间</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'date'</span>, 1);</span><br><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'month'</span>, 3); // 四月</span><br><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'second'</span>, 30);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="3-Dayjs操作相关API"><a href="#3-Dayjs操作相关API" class="headerlink" title="3.Dayjs操作相关API"></a>3.Dayjs操作相关API</h4><p>您可以对 Dayjs 对象如下增加减少之类的操作</p>
+<p>增加时间并返回一个新的 Dayjs() 对象</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().add(value : Number, unit : String);</span><br><span class="line">dayjs().add(7, <span class="string">'day'</span>); //在当前的基础上加7天</span><br></pre></td></tr></table></figure>
+<p>减少时间并返回一个新的 Dayjs() 对象</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().subtract(value : Number, unit : String);</span><br><span class="line">dayjs().subtract(7, <span class="string">'day'</span>); //在当前基础上减少7天</span><br></pre></td></tr></table></figure>
+<p>返回当前时间的开头时间的 Dayjs() 对象，如月份的第一天</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().startOf(unit : String);</span><br><span class="line">dayjs().startOf(<span class="string">'month'</span>); //Tue, 30 Apr 2019 16:00:00 GMT</span><br></pre></td></tr></table></figure>
+<p>返回当前时间的末尾时间的 Dayjs() 对象，如月份的最后一天</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().endOf(unit : String);</span><br><span class="line">dayjs().endOf(<span class="string">'month'</span>); //Fri, 31 May 2019 15:59:59 GMT</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="4-Dayjs显示相关PAI"><a href="#4-Dayjs显示相关PAI" class="headerlink" title="4.Dayjs显示相关PAI"></a>4.Dayjs显示相关PAI</h4><p>格式化 Dayjs 对象并展示。</p>
+<p>接收一系列的时间日期字符串并替换成相应的值</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().format(String)</span><br><span class="line">dayjs(<span class="string">'2019-01-25'</span>).format(<span class="string">'YYYY-MM-DD HH:mm:ss'</span>)</span><br><span class="line">dayjs().format(<span class="string">'YYYY-MM-DD'</span>)</span><br><span class="line">dayjs().format(<span class="string">'YYYY-MM'</span>) //2019</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">格式</th>
+<th align="center">输出</th>
+<th align="right">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">YY</td>
+<td align="center">18</td>
+<td align="right">两位数的年份</td>
+</tr>
+<tr>
+<td align="left">YYYY</td>
+<td align="center">2018</td>
+<td align="right">四位数的年份</td>
+</tr>
+<tr>
+<td align="left">M</td>
+<td align="center">1-12</td>
+<td align="right">月份，从 1 开始</td>
+</tr>
+<tr>
+<td align="left">MM</td>
+<td align="center">01-12</td>
+<td align="right">月份，两位数</td>
+</tr>
+<tr>
+<td align="left">MMM</td>
+<td align="center">Jan-Dec</td>
+<td align="right">简写的月份名称</td>
+</tr>
+<tr>
+<td align="left">MMMM</td>
+<td align="center">January-December</td>
+<td align="right">完整的月份名称</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="center">1-31</td>
+<td align="right">月份里的一天</td>
+</tr>
+<tr>
+<td align="left">DD</td>
+<td align="center">01-31</td>
+<td align="right">月份里的一天，两位数</td>
+</tr>
+<tr>
+<td align="left">d</td>
+<td align="center">0-6</td>
+<td align="right">一周中的一天，星期天是 0</td>
+</tr>
+<tr>
+<td align="left">dd</td>
+<td align="center">Su-Sa</td>
+<td align="right">最简写的一周中一天的名称</td>
+</tr>
+<tr>
+<td align="left">ddd</td>
+<td align="center">Sun-Sat</td>
+<td align="right">简写的一周中一天的名称</td>
+</tr>
+<tr>
+<td align="left">dddd</td>
+<td align="center">Sunday-Saturday</td>
+<td align="right">一周中一天的名称</td>
+</tr>
+<tr>
+<td align="left">H</td>
+<td align="center">0-23</td>
+<td align="right">小时</td>
+</tr>
+<tr>
+<td align="left">HH</td>
+<td align="center">00-23</td>
+<td align="right">小时，两位数</td>
+</tr>
+<tr>
+<td align="left">h</td>
+<td align="center">1-12</td>
+<td align="right">小时, 12 小时制</td>
+</tr>
+<tr>
+<td align="left">hh</td>
+<td align="center">01-12</td>
+<td align="right">Hours, 12 小时制, 两位数</td>
+</tr>
+<tr>
+<td align="left">m</td>
+<td align="center">0-59</td>
+<td align="right">分钟</td>
+</tr>
+<tr>
+<td align="left">mm</td>
+<td align="center">00-59</td>
+<td align="right">分钟，两位数</td>
+</tr>
+<tr>
+<td align="left">s</td>
+<td align="center">0-59</td>
+<td align="right">秒</td>
+</tr>
+<tr>
+<td align="left">ss</td>
+<td align="center">00-59</td>
+<td align="right">秒 两位数</td>
+</tr>
+<tr>
+<td align="left">SSS</td>
+<td align="center">000-999</td>
+<td align="right">毫秒 三位数</td>
+</tr>
+<tr>
+<td align="left">Z</td>
+<td align="center">+5:00</td>
+<td align="right">UTC 的偏移量</td>
+</tr>
+<tr>
+<td align="left">ZZ</td>
+<td align="center">+0500</td>
+<td align="right">UTC 的偏移量，数字前面加上 0</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="center">AM PM</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="left">a</td>
+<td align="center">am pm</td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<p>获取两个 Dayjs 对象的时间差，默认毫秒</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const date1 = dayjs(<span class="string">'2019-01-25'</span>)</span><br><span class="line">const date2 = dayjs(<span class="string">'2018-06-05'</span>)</span><br><span class="line">date1.diff(date2) // 20214000000</span><br><span class="line">date1.diff(date2, <span class="string">'month'</span>) // 7</span><br><span class="line">date1.diff(date2, <span class="string">'month'</span>, <span class="literal">true</span>) // 7.645161290322581</span><br><span class="line">date1.diff(date2, <span class="string">'day'</span>) // 233</span><br></pre></td></tr></table></figure>
+<p>返回 Unix 时间戳 (毫秒)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().valueOf()</span><br></pre></td></tr></table></figure>
+<p>返回 Unix 时间戳 (秒)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().unix()</span><br></pre></td></tr></table></figure>
+<p>返回月份的天数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().daysInMonth()</span><br></pre></td></tr></table></figure>
+<p>返回原生的 Date 对象</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toDate()</span><br></pre></td></tr></table></figure>
+<p>当序列化 Dayjs 对象时，会返回 ISO8601 格式的字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toJSON() //<span class="string">"2018-08-08T00:00:00.000Z"</span></span><br></pre></td></tr></table></figure>
+<p>返回 ISO8601 格式的字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toISOString()</span><br></pre></td></tr></table></figure>
+<p>返回字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toString()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="5-Dayjs查询相关API"><a href="#5-Dayjs查询相关API" class="headerlink" title="5.Dayjs查询相关API"></a>5.Dayjs查询相关API</h4><p>检查一个 Dayjs 对象是否在另一个 Dayjs 对象时间之前</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isBefore(Dayjs, unit? : String);</span><br><span class="line">dayjs().isBefore(dayjs()); // <span class="literal">false</span></span><br><span class="line">dayjs().isBefore(dayjs(), <span class="string">'year'</span>); // <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>检查一个 Dayjs 对象是否和另一个 Dayjs 对象时间相同</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isSame(Dayjs, unit? : String);</span><br><span class="line">dayjs().isSame(dayjs()); // <span class="literal">true</span></span><br><span class="line">dayjs().isSame(dayjs(), <span class="string">'year'</span>); // <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>检查一个 Dayjs 对象是否在另一个 Dayjs 对象时间之后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isAfter(Dayjs, unit? : String);</span><br><span class="line">dayjs().isAfter(dayjs()); // <span class="literal">false</span></span><br><span class="line">dayjs().isAfter(dayjs(), <span class="string">'year'</span>); // <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>Jscript日期处理库</tag>
+        <tag>Dayjs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>节假日获取API</title>
     <url>/2020/04/10/%E8%8A%82%E5%81%87%E6%97%A5%E8%8E%B7%E5%8F%96API/</url>
     <content><![CDATA[<p>**说明：</p>
