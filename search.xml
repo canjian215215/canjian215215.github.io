@@ -1,825 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Dayjs日期库使用</title>
-    <url>/2020/04/11/Dayjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><strong>dayjs是一个轻量的处理时间和日期的 JavaScript 库，这里是dayjs的github网址<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2lhbWt1bi9kYXlqcw==">https://github.com/iamkun/dayjs<i class="fa fa-external-link-alt"></i></span></strong></p>
-<h3 id="Dayjs好处"><a href="#Dayjs好处" class="headerlink" title="Dayjs好处"></a>Dayjs好处</h3><ul>
-<li>🕒 和Moment.js有着相同的API和模式</li>
-<li>💪 不可变、持久性</li>
-<li>🔥 提供链式调用</li>
-<li>🌐 国际化标准</li>
-<li>📦 超小的压缩体积，仅仅有2kb左右</li>
-<li>👫 极大多数的浏览器兼容</li>
-</ul>
-<h3 id="Dayjs安装"><a href="#Dayjs安装" class="headerlink" title="Dayjs安装"></a>Dayjs安装</h3><p><em>NPM：</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install dayjs --save</span><br><span class="line"></span><br><span class="line">var dayjs = require(<span class="string">'dayjs'</span>);</span><br><span class="line">dayjs().format();</span><br></pre></td></tr></table></figure>
-
-<p><em>CDN:</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/dayjs"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  dayjs().format();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p><strong>说明：</strong></p>
-<ul>
-<li><strong><em>API中文文档<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2lhbWt1bi9kYXlqcy9ibG9iL21hc3Rlci9kb2NzL3poLWNuL0FQSS1yZWZlcmVuY2UubWQ=">https://github.com/iamkun/dayjs/blob/master/docs/zh-cn/API-reference.md<i class="fa fa-external-link-alt"></i></span></em></strong></li>
-<li><strong>*<font style='color:red;'>Day.js 的返回值都是新的 Dayjs</font>对象*</strong></li>
-</ul>
-<h3 id="Dayjs-API使用"><a href="#Dayjs-API使用" class="headerlink" title="Dayjs API使用"></a>Dayjs API使用</h3><hr>
-<h4 id="1-Dayjs解析相关API"><a href="#1-Dayjs解析相关API" class="headerlink" title="1.Dayjs解析相关API"></a>1.Dayjs解析相关API</h4><p>直接运行 dayjs()，得到包含当前时间和日期的 Dayjs 对象</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs()  //返回当前时间 Tue, 28 May 2019 05:57:34 GMT</span><br></pre></td></tr></table></figure>
-<p>可以解析传入的一个标准的ISO 8601时间字符串</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(<span class="string">'1995-12-25'</span>) //Sun, 24 Dec 1995 16:00:00 GMT</span><br></pre></td></tr></table></figure>
-<p>可以解析传入的一个 Javascript Date 对象</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(new Date(2020,4,11)) //Mon, 17 Sep 2018 16:00:00 GMT</span><br></pre></td></tr></table></figure>
-<p>可以解析传入的一个 Unix 时间戳 (13 位数字)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(1318781876406) //Sun, 16 Oct 2011 16:17:56 GMT</span><br></pre></td></tr></table></figure>
-<p>Dayjs 对象是不可变的，如果您想获得一个对象的拷贝，请执行 .clone()。 向 dayjs() 里传入一个 Dayjs 对象也能实现同样的效果。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(Dayjs)</span><br><span class="line">dayjs().<span class="built_in">clone</span>()</span><br></pre></td></tr></table></figure>
-<p>检测当前 Dayjs 对象是否是一个有效的时间</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isValid()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="2-Dayjs获取和设置相关的API"><a href="#2-Dayjs获取和设置相关的API" class="headerlink" title="2.Dayjs获取和设置相关的API"></a>2.Dayjs获取和设置相关的API</h4><p>获取或设置年份</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().year() //2019</span><br><span class="line">dayjs().year(2000) //Sun, 28 May 2000 06:14:07 GMT</span><br></pre></td></tr></table></figure>
-<p>获取或设置月份。从 0 开始</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().month() //4 实际上5月</span><br><span class="line">dayjs().month(0) //Mon, 28 Jan 2019 06:15:25 GMT</span><br></pre></td></tr></table></figure>
-<p>获取或设置日期。从 1 开始</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().date() //28 当天是2019年5月28日</span><br><span class="line">dayjs().date(1) //Wed, 01 May 2019 06:17:04 GMT</span><br></pre></td></tr></table></figure>
-<p>获取或设置星期。从星期天 0 开始</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().day() //2 当天是星期二</span><br><span class="line">dayjs().day(0) //Sun, 26 May 2019 06:18:13 GMT 被强行设置为上周日</span><br></pre></td></tr></table></figure>
-<p>获取或设置小时</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().hour()  //14 当时为下午2点</span><br><span class="line">dayjs().hour(12) //Tue, 28 May 2019 04:21:30 GMT 不清楚</span><br></pre></td></tr></table></figure>
-<p>获取或设置分钟</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().minute() //22</span><br><span class="line">dayjs().minute(59) //Tue, 28 May 2019 06:59:50 GMT</span><br></pre></td></tr></table></figure>
-<p>获取或设置秒</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().second()</span><br><span class="line">dayjs().second(1)</span><br></pre></td></tr></table></figure>
-<p>获取或设置毫秒</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().millisecond()</span><br><span class="line">dayjs().millisecond(1)</span><br></pre></td></tr></table></figure>
-<p>获取从 Dayjs 对象中取到的信息 传入的单位 (unit) 对大小写不敏感</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().get(<span class="string">'month'</span>) //4</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th align="left">单位</th>
-<th align="center">缩写</th>
-<th align="right">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">date</td>
-<td align="center"></td>
-<td align="right">日期</td>
-</tr>
-<tr>
-<td align="left">day</td>
-<td align="center">d</td>
-<td align="right">星期几 (星期天 0, 星期六 6)</td>
-</tr>
-<tr>
-<td align="left">month</td>
-<td align="center">M</td>
-<td align="right">月 (一月 0, 十二月 11)</td>
-</tr>
-<tr>
-<td align="left">year</td>
-<td align="center">y</td>
-<td align="right">年</td>
-</tr>
-<tr>
-<td align="left">hour</td>
-<td align="center">h</td>
-<td align="right">时</td>
-</tr>
-<tr>
-<td align="left">minute</td>
-<td align="center">m</td>
-<td align="right">分</td>
-</tr>
-<tr>
-<td align="left">second</td>
-<td align="center">s</td>
-<td align="right">秒</td>
-</tr>
-<tr>
-<td align="left">millisecond</td>
-<td align="center">ms</td>
-<td align="right">毫秒</td>
-</tr>
-</tbody></table>
-<p>设置时间</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'date'</span>, 1);</span><br><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'month'</span>, 3); // 四月</span><br><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'second'</span>, 30);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="3-Dayjs操作相关API"><a href="#3-Dayjs操作相关API" class="headerlink" title="3.Dayjs操作相关API"></a>3.Dayjs操作相关API</h4><p>您可以对 Dayjs 对象如下增加减少之类的操作</p>
-<p>增加时间并返回一个新的 Dayjs() 对象</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().add(value : Number, unit : String);</span><br><span class="line">dayjs().add(7, <span class="string">'day'</span>); //在当前的基础上加7天</span><br></pre></td></tr></table></figure>
-<p>减少时间并返回一个新的 Dayjs() 对象</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().subtract(value : Number, unit : String);</span><br><span class="line">dayjs().subtract(7, <span class="string">'day'</span>); //在当前基础上减少7天</span><br></pre></td></tr></table></figure>
-<p>返回当前时间的开头时间的 Dayjs() 对象，如月份的第一天</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().startOf(unit : String);</span><br><span class="line">dayjs().startOf(<span class="string">'month'</span>); //Tue, 30 Apr 2019 16:00:00 GMT</span><br></pre></td></tr></table></figure>
-<p>返回当前时间的末尾时间的 Dayjs() 对象，如月份的最后一天</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().endOf(unit : String);</span><br><span class="line">dayjs().endOf(<span class="string">'month'</span>); //Fri, 31 May 2019 15:59:59 GMT</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="4-Dayjs显示相关PAI"><a href="#4-Dayjs显示相关PAI" class="headerlink" title="4.Dayjs显示相关PAI"></a>4.Dayjs显示相关PAI</h4><p>格式化 Dayjs 对象并展示。</p>
-<p>接收一系列的时间日期字符串并替换成相应的值</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().format(String)</span><br><span class="line">dayjs(<span class="string">'2019-01-25'</span>).format(<span class="string">'YYYY-MM-DD HH:mm:ss'</span>)</span><br><span class="line">dayjs().format(<span class="string">'YYYY-MM-DD'</span>)</span><br><span class="line">dayjs().format(<span class="string">'YYYY-MM'</span>) //2019</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th align="left">格式</th>
-<th align="center">输出</th>
-<th align="right">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">YY</td>
-<td align="center">18</td>
-<td align="right">两位数的年份</td>
-</tr>
-<tr>
-<td align="left">YYYY</td>
-<td align="center">2018</td>
-<td align="right">四位数的年份</td>
-</tr>
-<tr>
-<td align="left">M</td>
-<td align="center">1-12</td>
-<td align="right">月份，从 1 开始</td>
-</tr>
-<tr>
-<td align="left">MM</td>
-<td align="center">01-12</td>
-<td align="right">月份，两位数</td>
-</tr>
-<tr>
-<td align="left">MMM</td>
-<td align="center">Jan-Dec</td>
-<td align="right">简写的月份名称</td>
-</tr>
-<tr>
-<td align="left">MMMM</td>
-<td align="center">January-December</td>
-<td align="right">完整的月份名称</td>
-</tr>
-<tr>
-<td align="left">D</td>
-<td align="center">1-31</td>
-<td align="right">月份里的一天</td>
-</tr>
-<tr>
-<td align="left">DD</td>
-<td align="center">01-31</td>
-<td align="right">月份里的一天，两位数</td>
-</tr>
-<tr>
-<td align="left">d</td>
-<td align="center">0-6</td>
-<td align="right">一周中的一天，星期天是 0</td>
-</tr>
-<tr>
-<td align="left">dd</td>
-<td align="center">Su-Sa</td>
-<td align="right">最简写的一周中一天的名称</td>
-</tr>
-<tr>
-<td align="left">ddd</td>
-<td align="center">Sun-Sat</td>
-<td align="right">简写的一周中一天的名称</td>
-</tr>
-<tr>
-<td align="left">dddd</td>
-<td align="center">Sunday-Saturday</td>
-<td align="right">一周中一天的名称</td>
-</tr>
-<tr>
-<td align="left">H</td>
-<td align="center">0-23</td>
-<td align="right">小时</td>
-</tr>
-<tr>
-<td align="left">HH</td>
-<td align="center">00-23</td>
-<td align="right">小时，两位数</td>
-</tr>
-<tr>
-<td align="left">h</td>
-<td align="center">1-12</td>
-<td align="right">小时, 12 小时制</td>
-</tr>
-<tr>
-<td align="left">hh</td>
-<td align="center">01-12</td>
-<td align="right">Hours, 12 小时制, 两位数</td>
-</tr>
-<tr>
-<td align="left">m</td>
-<td align="center">0-59</td>
-<td align="right">分钟</td>
-</tr>
-<tr>
-<td align="left">mm</td>
-<td align="center">00-59</td>
-<td align="right">分钟，两位数</td>
-</tr>
-<tr>
-<td align="left">s</td>
-<td align="center">0-59</td>
-<td align="right">秒</td>
-</tr>
-<tr>
-<td align="left">ss</td>
-<td align="center">00-59</td>
-<td align="right">秒 两位数</td>
-</tr>
-<tr>
-<td align="left">SSS</td>
-<td align="center">000-999</td>
-<td align="right">毫秒 三位数</td>
-</tr>
-<tr>
-<td align="left">Z</td>
-<td align="center">+5:00</td>
-<td align="right">UTC 的偏移量</td>
-</tr>
-<tr>
-<td align="left">ZZ</td>
-<td align="center">+0500</td>
-<td align="right">UTC 的偏移量，数字前面加上 0</td>
-</tr>
-<tr>
-<td align="left">A</td>
-<td align="center">AM PM</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td align="left">a</td>
-<td align="center">am pm</td>
-<td align="right"></td>
-</tr>
-</tbody></table>
-<p>获取两个 Dayjs 对象的时间差，默认毫秒</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const date1 = dayjs(<span class="string">'2019-01-25'</span>)</span><br><span class="line">const date2 = dayjs(<span class="string">'2018-06-05'</span>)</span><br><span class="line">date1.diff(date2) // 20214000000</span><br><span class="line">date1.diff(date2, <span class="string">'month'</span>) // 7</span><br><span class="line">date1.diff(date2, <span class="string">'month'</span>, <span class="literal">true</span>) // 7.645161290322581</span><br><span class="line">date1.diff(date2, <span class="string">'day'</span>) // 233</span><br></pre></td></tr></table></figure>
-<p>返回 Unix 时间戳 (毫秒)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().valueOf()</span><br></pre></td></tr></table></figure>
-<p>返回 Unix 时间戳 (秒)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().unix()</span><br></pre></td></tr></table></figure>
-<p>返回月份的天数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().daysInMonth()</span><br></pre></td></tr></table></figure>
-<p>返回原生的 Date 对象</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toDate()</span><br></pre></td></tr></table></figure>
-<p>当序列化 Dayjs 对象时，会返回 ISO8601 格式的字符串</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toJSON() //<span class="string">"2018-08-08T00:00:00.000Z"</span></span><br></pre></td></tr></table></figure>
-<p>返回 ISO8601 格式的字符串</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toISOString()</span><br></pre></td></tr></table></figure>
-<p>返回字符串</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().toString()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="5-Dayjs查询相关API"><a href="#5-Dayjs查询相关API" class="headerlink" title="5.Dayjs查询相关API"></a>5.Dayjs查询相关API</h4><p>检查一个 Dayjs 对象是否在另一个 Dayjs 对象时间之前</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isBefore(Dayjs, unit? : String);</span><br><span class="line">dayjs().isBefore(dayjs()); // <span class="literal">false</span></span><br><span class="line">dayjs().isBefore(dayjs(), <span class="string">'year'</span>); // <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p>检查一个 Dayjs 对象是否和另一个 Dayjs 对象时间相同</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isSame(Dayjs, unit? : String);</span><br><span class="line">dayjs().isSame(dayjs()); // <span class="literal">true</span></span><br><span class="line">dayjs().isSame(dayjs(), <span class="string">'year'</span>); // <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>检查一个 Dayjs 对象是否在另一个 Dayjs 对象时间之后</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs().isAfter(Dayjs, unit? : String);</span><br><span class="line">dayjs().isAfter(dayjs()); // <span class="literal">false</span></span><br><span class="line">dayjs().isAfter(dayjs(), <span class="string">'year'</span>); // <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Dayjs日期库使用</title>
+      <link href="/2020/04/11/Dayjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/04/11/Dayjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p><strong>dayjs是一个轻量的处理时间和日期的 JavaScript 库，这里是dayjs的github网址<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2lhbWt1bi9kYXlqcw==">https://github.com/iamkun/dayjs<i class="fa fa-external-link-alt"></i></span></strong></p><h3 id="Dayjs好处"><a href="#Dayjs好处" class="headerlink" title="Dayjs好处"></a>Dayjs好处</h3><ul><li>🕒 和Moment.js有着相同的API和模式</li><li>💪 不可变、持久性</li><li>🔥 提供链式调用</li><li>🌐 国际化标准</li><li>📦 超小的压缩体积，仅仅有2kb左右</li><li>👫 极大多数的浏览器兼容</li></ul><h3 id="Dayjs安装"><a href="#Dayjs安装" class="headerlink" title="Dayjs安装"></a>Dayjs安装</h3><p><em>NPM：</em></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install dayjs --save</span><br><span class="line"></span><br><span class="line">var dayjs = require(<span class="string">'dayjs'</span>);</span><br><span class="line">dayjs().format();</span><br></pre></td></tr></table></figure><p><em>CDN:</em></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/dayjs"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  dayjs().format();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><a id="more"></a><p><strong>说明：</strong></p><ul><li><strong><em>API中文文档<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2lhbWt1bi9kYXlqcy9ibG9iL21hc3Rlci9kb2NzL3poLWNuL0FQSS1yZWZlcmVuY2UubWQ=">https://github.com/iamkun/dayjs/blob/master/docs/zh-cn/API-reference.md<i class="fa fa-external-link-alt"></i></span></em></strong></li><li><strong>*<font style='color:red;'>Day.js 的返回值都是新的 Dayjs</font>对象*</strong></li></ul><h3 id="Dayjs-API使用"><a href="#Dayjs-API使用" class="headerlink" title="Dayjs API使用"></a>Dayjs API使用</h3><hr><h4 id="1-Dayjs解析相关API"><a href="#1-Dayjs解析相关API" class="headerlink" title="1.Dayjs解析相关API"></a>1.Dayjs解析相关API</h4><p>直接运行 dayjs()，得到包含当前时间和日期的 Dayjs 对象</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs()  //返回当前时间 Tue, 28 May 2019 05:57:34 GMT</span><br></pre></td></tr></table></figure><p>可以解析传入的一个标准的ISO 8601时间字符串</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs(<span class="string">'1995-12-25'</span>) //Sun, 24 Dec 1995 16:00:00 GMT</span><br></pre></td></tr></table></figure><p>可以解析传入的一个 Javascript Date 对象</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs(new Date(2020,4,11)) //Mon, 17 Sep 2018 16:00:00 GMT</span><br></pre></td></tr></table></figure><p>可以解析传入的一个 Unix 时间戳 (13 位数字)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs(1318781876406) //Sun, 16 Oct 2011 16:17:56 GMT</span><br></pre></td></tr></table></figure><p>Dayjs 对象是不可变的，如果您想获得一个对象的拷贝，请执行 .clone()。 向 dayjs() 里传入一个 Dayjs 对象也能实现同样的效果。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs(Dayjs)</span><br><span class="line">dayjs().<span class="built_in">clone</span>()</span><br></pre></td></tr></table></figure><p>检测当前 Dayjs 对象是否是一个有效的时间</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().isValid()</span><br></pre></td></tr></table></figure><hr><h4 id="2-Dayjs获取和设置相关的API"><a href="#2-Dayjs获取和设置相关的API" class="headerlink" title="2.Dayjs获取和设置相关的API"></a>2.Dayjs获取和设置相关的API</h4><p>获取或设置年份</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().year() //2019</span><br><span class="line">dayjs().year(2000) //Sun, 28 May 2000 06:14:07 GMT</span><br></pre></td></tr></table></figure><p>获取或设置月份。从 0 开始</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().month() //4 实际上5月</span><br><span class="line">dayjs().month(0) //Mon, 28 Jan 2019 06:15:25 GMT</span><br></pre></td></tr></table></figure><p>获取或设置日期。从 1 开始</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().date() //28 当天是2019年5月28日</span><br><span class="line">dayjs().date(1) //Wed, 01 May 2019 06:17:04 GMT</span><br></pre></td></tr></table></figure><p>获取或设置星期。从星期天 0 开始</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().day() //2 当天是星期二</span><br><span class="line">dayjs().day(0) //Sun, 26 May 2019 06:18:13 GMT 被强行设置为上周日</span><br></pre></td></tr></table></figure><p>获取或设置小时</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().hour()  //14 当时为下午2点</span><br><span class="line">dayjs().hour(12) //Tue, 28 May 2019 04:21:30 GMT 不清楚</span><br></pre></td></tr></table></figure><p>获取或设置分钟</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().minute() //22</span><br><span class="line">dayjs().minute(59) //Tue, 28 May 2019 06:59:50 GMT</span><br></pre></td></tr></table></figure><p>获取或设置秒</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().second()</span><br><span class="line">dayjs().second(1)</span><br></pre></td></tr></table></figure><p>获取或设置毫秒</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().millisecond()</span><br><span class="line">dayjs().millisecond(1)</span><br></pre></td></tr></table></figure><p>获取从 Dayjs 对象中取到的信息 传入的单位 (unit) 对大小写不敏感</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().get(<span class="string">'month'</span>) //4</span><br></pre></td></tr></table></figure><table><thead><tr><th align="left">单位</th><th align="center">缩写</th><th align="right">描述</th></tr></thead><tbody><tr><td align="left">date</td><td align="center"></td><td align="right">日期</td></tr><tr><td align="left">day</td><td align="center">d</td><td align="right">星期几 (星期天 0, 星期六 6)</td></tr><tr><td align="left">month</td><td align="center">M</td><td align="right">月 (一月 0, 十二月 11)</td></tr><tr><td align="left">year</td><td align="center">y</td><td align="right">年</td></tr><tr><td align="left">hour</td><td align="center">h</td><td align="right">时</td></tr><tr><td align="left">minute</td><td align="center">m</td><td align="right">分</td></tr><tr><td align="left">second</td><td align="center">s</td><td align="right">秒</td></tr><tr><td align="left">millisecond</td><td align="center">ms</td><td align="right">毫秒</td></tr></tbody></table><p>设置时间</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'date'</span>, 1);</span><br><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'month'</span>, 3); // 四月</span><br><span class="line">dayjs().<span class="built_in">set</span>(<span class="string">'second'</span>, 30);</span><br></pre></td></tr></table></figure><hr><h4 id="3-Dayjs操作相关API"><a href="#3-Dayjs操作相关API" class="headerlink" title="3.Dayjs操作相关API"></a>3.Dayjs操作相关API</h4><p>您可以对 Dayjs 对象如下增加减少之类的操作</p><p>增加时间并返回一个新的 Dayjs() 对象</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().add(value : Number, unit : String);</span><br><span class="line">dayjs().add(7, <span class="string">'day'</span>); //在当前的基础上加7天</span><br></pre></td></tr></table></figure><p>减少时间并返回一个新的 Dayjs() 对象</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().subtract(value : Number, unit : String);</span><br><span class="line">dayjs().subtract(7, <span class="string">'day'</span>); //在当前基础上减少7天</span><br></pre></td></tr></table></figure><p>返回当前时间的开头时间的 Dayjs() 对象，如月份的第一天</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().startOf(unit : String);</span><br><span class="line">dayjs().startOf(<span class="string">'month'</span>); //Tue, 30 Apr 2019 16:00:00 GMT</span><br></pre></td></tr></table></figure><p>返回当前时间的末尾时间的 Dayjs() 对象，如月份的最后一天</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayjs().endOf(unit : String);</span><br><span class="line">dayjs().endOf(<span class="string">'month'</span>); //Fri, 31 May 2019 15:59:59 GMT</span><br></pre></td></tr></table></figure><hr><h4 id="4-Dayjs显示相关PAI"><a href="#4-Dayjs显示相关PAI" class="headerlink" title="4.Dayjs显示相关PAI"></a>4.Dayjs显示相关PAI</h4><p>格式化 Dayjs 对象并展示。</p><p>接收一系列的时间日期字符串并替换成相应的值</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dayjs().format(String)</span><br><span class="line">dayjs(<span class="string">'2019-01-25'</span>).format(<span class="string">'YYYY-MM-DD HH:mm:ss'</span>)</span><br><span class="line">dayjs().format(<span class="string">'YYYY-MM-DD'</span>)</span><br><span class="line">dayjs().format(<span class="string">'YYYY-MM'</span>) //2019</span><br></pre></td></tr></table></figure><table><thead><tr><th align="left">格式</th><th align="center">输出</th><th align="right">描述</th></tr></thead><tbody><tr><td align="left">YY</td><td align="center">18</td><td align="right">两位数的年份</td></tr><tr><td align="left">YYYY</td><td align="center">2018</td><td align="right">四位数的年份</td></tr><tr><td align="left">M</td><td align="center">1-12</td><td align="right">月份，从 1 开始</td></tr><tr><td align="left">MM</td><td align="center">01-12</td><td align="right">月份，两位数</td></tr><tr><td align="left">MMM</td><td align="center">Jan-Dec</td><td align="right">简写的月份名称</td></tr><tr><td align="left">MMMM</td><td align="center">January-December</td><td align="right">完整的月份名称</td></tr><tr><td align="left">D</td><td align="center">1-31</td><td align="right">月份里的一天</td></tr><tr><td align="left">DD</td><td align="center">01-31</td><td align="right">月份里的一天，两位数</td></tr><tr><td align="left">d</td><td align="center">0-6</td><td align="right">一周中的一天，星期天是 0</td></tr><tr><td align="left">dd</td><td align="center">Su-Sa</td><td align="right">最简写的一周中一天的名称</td></tr><tr><td align="left">ddd</td><td align="center">Sun-Sat</td><td align="right">简写的一周中一天的名称</td></tr><tr><td align="left">dddd</td><td align="center">Sunday-Saturday</td><td align="right">一周中一天的名称</td></tr><tr><td align="left">H</td><td align="center">0-23</td><td align="right">小时</td></tr><tr><td align="left">HH</td><td align="center">00-23</td><td align="right">小时，两位数</td></tr><tr><td align="left">h</td><td align="center">1-12</td><td align="right">小时, 12 小时制</td></tr><tr><td align="left">hh</td><td align="center">01-12</td><td align="right">Hours, 12 小时制, 两位数</td></tr><tr><td align="left">m</td><td align="center">0-59</td><td align="right">分钟</td></tr><tr><td align="left">mm</td><td align="center">00-59</td><td align="right">分钟，两位数</td></tr><tr><td align="left">s</td><td align="center">0-59</td><td align="right">秒</td></tr><tr><td align="left">ss</td><td align="center">00-59</td><td align="right">秒 两位数</td></tr><tr><td align="left">SSS</td><td align="center">000-999</td><td align="right">毫秒 三位数</td></tr><tr><td align="left">Z</td><td align="center">+5:00</td><td align="right">UTC 的偏移量</td></tr><tr><td align="left">ZZ</td><td align="center">+0500</td><td align="right">UTC 的偏移量，数字前面加上 0</td></tr><tr><td align="left">A</td><td align="center">AM PM</td><td align="right"></td></tr><tr><td align="left">a</td><td align="center">am pm</td><td align="right"></td></tr></tbody></table><p>获取两个 Dayjs 对象的时间差，默认毫秒</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const date1 = dayjs(<span class="string">'2019-01-25'</span>)</span><br><span class="line">const date2 = dayjs(<span class="string">'2018-06-05'</span>)</span><br><span class="line">date1.diff(date2) // 20214000000</span><br><span class="line">date1.diff(date2, <span class="string">'month'</span>) // 7</span><br><span class="line">date1.diff(date2, <span class="string">'month'</span>, <span class="literal">true</span>) // 7.645161290322581</span><br><span class="line">date1.diff(date2, <span class="string">'day'</span>) // 233</span><br></pre></td></tr></table></figure><p>返回 Unix 时间戳 (毫秒)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().valueOf()</span><br></pre></td></tr></table></figure><p>返回 Unix 时间戳 (秒)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().unix()</span><br></pre></td></tr></table></figure><p>返回月份的天数</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().daysInMonth()</span><br></pre></td></tr></table></figure><p>返回原生的 Date 对象</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().toDate()</span><br></pre></td></tr></table></figure><p>当序列化 Dayjs 对象时，会返回 ISO8601 格式的字符串</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().toJSON() //<span class="string">"2018-08-08T00:00:00.000Z"</span></span><br></pre></td></tr></table></figure><p>返回 ISO8601 格式的字符串</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().toISOString()</span><br></pre></td></tr></table></figure><p>返回字符串</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayjs().toString()</span><br></pre></td></tr></table></figure><hr><h4 id="5-Dayjs查询相关API"><a href="#5-Dayjs查询相关API" class="headerlink" title="5.Dayjs查询相关API"></a>5.Dayjs查询相关API</h4><p>检查一个 Dayjs 对象是否在另一个 Dayjs 对象时间之前</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dayjs().isBefore(Dayjs, unit? : String);</span><br><span class="line">dayjs().isBefore(dayjs()); // <span class="literal">false</span></span><br><span class="line">dayjs().isBefore(dayjs(), <span class="string">'year'</span>); // <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>检查一个 Dayjs 对象是否和另一个 Dayjs 对象时间相同</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dayjs().isSame(Dayjs, unit? : String);</span><br><span class="line">dayjs().isSame(dayjs()); // <span class="literal">true</span></span><br><span class="line">dayjs().isSame(dayjs(), <span class="string">'year'</span>); // <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>检查一个 Dayjs 对象是否在另一个 Dayjs 对象时间之后</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dayjs().isAfter(Dayjs, unit? : String);</span><br><span class="line">dayjs().isAfter(dayjs()); // <span class="literal">false</span></span><br><span class="line">dayjs().isAfter(dayjs(), <span class="string">'year'</span>); // <span class="literal">false</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>JS</category>
+          
+          <category> JS </category>
+          
       </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>Jscript日期处理库</tag>
-        <tag>Dayjs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>节假日获取API</title>
-    <url>/2020/04/10/%E8%8A%82%E5%81%87%E6%97%A5%E8%8E%B7%E5%8F%96API/</url>
-    <content><![CDATA[<p>**说明：</p>
-<ul>
-<li>一个免费的节假日获取接口API**</li>
-</ul>
-<h3 id="1-获取指定年份或月份的所有节假日信息"><a href="#1-获取指定年份或月份的所有节假日信息" class="headerlink" title="1.获取指定年份或月份的所有节假日信息"></a>1.获取指定年份或月份的所有节假日信息</h3><ul>
-<li>接口地址: <span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhci8kZGF0ZQ==">http://timor.tech/api/holiday/year/$date<i class="fa fa-external-link-alt"></i></span>?</li>
-<li>@params $data: 指定年份或年月份，格式 ‘2019-02’ ‘2019-2’ 或者 ‘2019’。可以省略，则默认服务器当前时间的年份</li>
-<li>@return json: 返回指定年份或年月份的所有节假日，以日期作为key，格式：mm-dd。如果没有该年份或月份，则返回空对象。注意目前只配置了最多比当前时间往后一年的节假日<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,               // 0服务正常。-1服务出错</span><br><span class="line">  <span class="string">"holiday"</span>: &#123;</span><br><span class="line">    <span class="string">"10-01"</span>: &#123;</span><br><span class="line">      <span class="string">"holiday"</span>: <span class="literal">true</span>,     // 该字段一定为<span class="literal">true</span></span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"国庆节"</span>,     // 节假日的中文名。</span><br><span class="line">      <span class="string">"wage"</span>: 3,           // 薪资倍数，3表示是3倍工资</span><br><span class="line">      <span class="string">"date"</span>: <span class="string">"2018-10-01"</span> // 节假日的日期</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"10-02"</span>: &#123;</span><br><span class="line">      <span class="string">"holiday"</span>: <span class="literal">true</span>,     // 该字段一定为<span class="literal">true</span></span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"国庆节"</span>,     // 节假日的中文名。</span><br><span class="line">      <span class="string">"wage"</span>: 3,           // 薪资倍数，3表示是3倍工资</span><br><span class="line">      <span class="string">"date"</span>: <span class="string">"2018-10-01"</span> // 节假日的日期</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>示例：</strong></p>
-<ul>
-<li><span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhcg==">http://timor.tech/api/holiday/year<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhci8yMDE4">http://timor.tech/api/holiday/year/2018<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhci8yMDE5LTAy">http://timor.tech/api/holiday/year/2019-02<i class="fa fa-external-link-alt"></i></span><a id="more"></a>
-
-</li>
-</ul>
-<blockquote>
-<p>官方地址：<br>[ 假日接口 ]: <span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXk=">http://timor.tech/api/holiday<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> Jscript日期处理库 </tag>
+            
+            <tag> Dayjs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>节假日获取API</title>
+      <link href="/2020/04/10/%E8%8A%82%E5%81%87%E6%97%A5%E8%8E%B7%E5%8F%96API/"/>
+      <url>/2020/04/10/%E8%8A%82%E5%81%87%E6%97%A5%E8%8E%B7%E5%8F%96API/</url>
+      
+        <content type="html"><![CDATA[<p>**说明：</p><ul><li>一个免费的节假日获取接口API**</li></ul><h3 id="1-获取指定年份或月份的所有节假日信息"><a href="#1-获取指定年份或月份的所有节假日信息" class="headerlink" title="1.获取指定年份或月份的所有节假日信息"></a>1.获取指定年份或月份的所有节假日信息</h3><ul><li>接口地址: <span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhci8kZGF0ZQ==">http://timor.tech/api/holiday/year/$date<i class="fa fa-external-link-alt"></i></span>?</li><li>@params $data: 指定年份或年月份，格式 ‘2019-02’ ‘2019-2’ 或者 ‘2019’。可以省略，则默认服务器当前时间的年份</li><li>@return json: 返回指定年份或年月份的所有节假日，以日期作为key，格式：mm-dd。如果没有该年份或月份，则返回空对象。注意目前只配置了最多比当前时间往后一年的节假日<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,               // 0服务正常。-1服务出错</span><br><span class="line">  <span class="string">"holiday"</span>: &#123;</span><br><span class="line">    <span class="string">"10-01"</span>: &#123;</span><br><span class="line">      <span class="string">"holiday"</span>: <span class="literal">true</span>,     // 该字段一定为<span class="literal">true</span></span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"国庆节"</span>,     // 节假日的中文名。</span><br><span class="line">      <span class="string">"wage"</span>: 3,           // 薪资倍数，3表示是3倍工资</span><br><span class="line">      <span class="string">"date"</span>: <span class="string">"2018-10-01"</span> // 节假日的日期</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"10-02"</span>: &#123;</span><br><span class="line">      <span class="string">"holiday"</span>: <span class="literal">true</span>,     // 该字段一定为<span class="literal">true</span></span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"国庆节"</span>,     // 节假日的中文名。</span><br><span class="line">      <span class="string">"wage"</span>: 3,           // 薪资倍数，3表示是3倍工资</span><br><span class="line">      <span class="string">"date"</span>: <span class="string">"2018-10-01"</span> // 节假日的日期</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><p><strong>示例：</strong></p><ul><li><span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhcg==">http://timor.tech/api/holiday/year<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhci8yMDE4">http://timor.tech/api/holiday/year/2018<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXkveWVhci8yMDE5LTAy">http://timor.tech/api/holiday/year/2019-02<i class="fa fa-external-link-alt"></i></span><a id="more"></a></li></ul><blockquote><p>官方地址：<br>[ 假日接口 ]: <span class="exturl" data-url="aHR0cDovL3RpbW9yLnRlY2gvYXBpL2hvbGlkYXk=">http://timor.tech/api/holiday<i class="fa fa-external-link-alt"></i></span></p></blockquote>]]></content>
+      
+      
       <categories>
-        <category>API</category>
+          
+          <category> API </category>
+          
       </categories>
-      <tags>
-        <tag>假日API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Momentjs日期库使用</title>
-    <url>/2020/04/09/Momentjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><strong><em>说明：<br>一款强大的前端日期处理库</em></strong></p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><ul>
-<li><p><strong>1.日期格式化</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment().format(<span class="string">'MMMM Do YYYY, h:mm:ss a'</span>); // 四月 9日 2020, 8:37:16 早上</span><br><span class="line">moment().format(<span class="string">'dddd'</span>);                    // 星期四</span><br><span class="line">moment().format(<span class="string">"MMM Do YY"</span>);               // 4月 9日 20</span><br><span class="line">moment().format(<span class="string">'YYYY [escaped] YYYY'</span>);     // 2020 escaped 2020</span><br><span class="line">moment().format();                          // 2020-04-09T08:37:16+08:00</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-</li>
-<li><p><strong>2.相对时间</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment(<span class="string">"20111031"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); // 8 年前</span><br><span class="line">moment(<span class="string">"20120620"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); // 8 年前</span><br><span class="line">moment().startOf(<span class="string">'day'</span>).fromNow();        // 9 小时前</span><br><span class="line">moment().endOf(<span class="string">'day'</span>).fromNow();          // 15 小时内</span><br><span class="line">moment().startOf(<span class="string">'hour'</span>).fromNow();       // 37 分钟前</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>3.日历时间</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment().subtract(10, <span class="string">'days'</span>).calendar(); // 2020/03/30</span><br><span class="line">moment().subtract(6, <span class="string">'days'</span>).calendar();  // 上星期五08:37</span><br><span class="line">moment().subtract(3, <span class="string">'days'</span>).calendar();  // 上星期一08:37</span><br><span class="line">moment().subtract(1, <span class="string">'days'</span>).calendar();  // 昨天08:37</span><br><span class="line">moment().calendar();                      // 今天08:37</span><br><span class="line">moment().add(1, <span class="string">'days'</span>).calendar();       // 明天08:37</span><br><span class="line">moment().add(3, <span class="string">'days'</span>).calendar();       // 下星期日08:37</span><br><span class="line">moment().add(10, <span class="string">'days'</span>).calendar();      // 2020/04/19</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>4.多语言支持</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">moment.locale();         // zh-cn</span><br><span class="line">moment().format(<span class="string">'LT'</span>);   // 08:37</span><br><span class="line">moment().format(<span class="string">'LTS'</span>);  // 08:37:16</span><br><span class="line">moment().format(<span class="string">'L'</span>);    // 2020/04/09</span><br><span class="line">moment().format(<span class="string">'l'</span>);    // 2020/4/9</span><br><span class="line">moment().format(<span class="string">'LL'</span>);   // 2020年4月9日</span><br><span class="line">moment().format(<span class="string">'ll'</span>);   // 2020年4月9日</span><br><span class="line">moment().format(<span class="string">'LLL'</span>);  // 2020年4月9日早上8点37分</span><br><span class="line">moment().format(<span class="string">'lll'</span>);  // 2020年4月9日 08:37</span><br><span class="line">moment().format(<span class="string">'LLLL'</span>); // 2020年4月9日星期四早上8点37分</span><br><span class="line">moment().format(<span class="string">'llll'</span>); // 2020年4月9日星期四 08:37</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>官网应用地址<br>[ Momentjs官网 ]: <span class="exturl" data-url="aHR0cDovL21vbWVudGpzLmNuLw==">http://momentjs.cn/<i class="fa fa-external-link-alt"></i></span> Momentjs</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 假日API </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Momentjs日期库使用</title>
+      <link href="/2020/04/09/Momentjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/04/09/Momentjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p><strong><em>说明：<br>一款强大的前端日期处理库</em></strong></p><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><ul><li><p><strong>1.日期格式化</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">moment().format(<span class="string">'MMMM Do YYYY, h:mm:ss a'</span>); // 四月 9日 2020, 8:37:16 早上</span><br><span class="line">moment().format(<span class="string">'dddd'</span>);                    // 星期四</span><br><span class="line">moment().format(<span class="string">"MMM Do YY"</span>);               // 4月 9日 20</span><br><span class="line">moment().format(<span class="string">'YYYY [escaped] YYYY'</span>);     // 2020 escaped 2020</span><br><span class="line">moment().format();                          // 2020-04-09T08:37:16+08:00</span><br></pre></td></tr></table></figure><a id="more"></a></li><li><p><strong>2.相对时间</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">moment(<span class="string">"20111031"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); // 8 年前</span><br><span class="line">moment(<span class="string">"20120620"</span>, <span class="string">"YYYYMMDD"</span>).fromNow(); // 8 年前</span><br><span class="line">moment().startOf(<span class="string">'day'</span>).fromNow();        // 9 小时前</span><br><span class="line">moment().endOf(<span class="string">'day'</span>).fromNow();          // 15 小时内</span><br><span class="line">moment().startOf(<span class="string">'hour'</span>).fromNow();       // 37 分钟前</span><br></pre></td></tr></table></figure></li><li><p><strong>3.日历时间</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">moment().subtract(10, <span class="string">'days'</span>).calendar(); // 2020/03/30</span><br><span class="line">moment().subtract(6, <span class="string">'days'</span>).calendar();  // 上星期五08:37</span><br><span class="line">moment().subtract(3, <span class="string">'days'</span>).calendar();  // 上星期一08:37</span><br><span class="line">moment().subtract(1, <span class="string">'days'</span>).calendar();  // 昨天08:37</span><br><span class="line">moment().calendar();                      // 今天08:37</span><br><span class="line">moment().add(1, <span class="string">'days'</span>).calendar();       // 明天08:37</span><br><span class="line">moment().add(3, <span class="string">'days'</span>).calendar();       // 下星期日08:37</span><br><span class="line">moment().add(10, <span class="string">'days'</span>).calendar();      // 2020/04/19</span><br></pre></td></tr></table></figure></li><li><p><strong>4.多语言支持</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">moment.locale();         // zh-cn</span><br><span class="line">moment().format(<span class="string">'LT'</span>);   // 08:37</span><br><span class="line">moment().format(<span class="string">'LTS'</span>);  // 08:37:16</span><br><span class="line">moment().format(<span class="string">'L'</span>);    // 2020/04/09</span><br><span class="line">moment().format(<span class="string">'l'</span>);    // 2020/4/9</span><br><span class="line">moment().format(<span class="string">'LL'</span>);   // 2020年4月9日</span><br><span class="line">moment().format(<span class="string">'ll'</span>);   // 2020年4月9日</span><br><span class="line">moment().format(<span class="string">'LLL'</span>);  // 2020年4月9日早上8点37分</span><br><span class="line">moment().format(<span class="string">'lll'</span>);  // 2020年4月9日 08:37</span><br><span class="line">moment().format(<span class="string">'LLLL'</span>); // 2020年4月9日星期四早上8点37分</span><br><span class="line">moment().format(<span class="string">'llll'</span>); // 2020年4月9日星期四 08:37</span><br></pre></td></tr></table></figure><blockquote><p>官网应用地址<br>[ Momentjs官网 ]: <span class="exturl" data-url="aHR0cDovL21vbWVudGpzLmNuLw==">http://momentjs.cn/<i class="fa fa-external-link-alt"></i></span> Momentjs</p></blockquote></li></ul>]]></content>
+      
+      
       <categories>
-        <category>JS</category>
+          
+          <category> JS </category>
+          
       </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>Jscript日期处理库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VUE修改对象或数组属性</title>
-    <url>/2020/04/09/VUE%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%88%96%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p><strong><em>由于VUE是响应式的设计框架，所以我们通过普通的方式修改对象或数组内的属性是无法动态改变dom内容，此时我们应gg该通过如下方式来修改：</em></strong></p>
-<a id="more"></a>
-
-<h3 id="一、修改属性"><a href="#一、修改属性" class="headerlink" title="一、修改属性"></a>一、修改属性</h3><ul>
-<li><strong>1）、对象修改方式</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$set</span>(this.data, <span class="string">"key"</span>,  value)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.set(this.data, <span class="string">"key"</span>, value)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>2)、数组修改方式</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$set</span>(this.data, index,  value)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.set(this.data, index, value)</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、删除属性"><a href="#二、删除属性" class="headerlink" title="二、删除属性"></a>二、删除属性</h3><ul>
-<li><strong>1）、对象修改方式</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$delete</span>(this.data, <span class="string">"key"</span>)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.delete(this.data, <span class="string">"key"</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>2）、数组修改方式</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$delete</span>(this.data, index)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.delete(this.data, index)</span><br></pre></td></tr></table></figure>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> Jscript日期处理库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VUE修改对象或数组属性</title>
+      <link href="/2020/04/09/VUE%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%88%96%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7/"/>
+      <url>/2020/04/09/VUE%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%88%96%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p><strong><em>由于VUE是响应式的设计框架，所以我们通过普通的方式修改对象或数组内的属性是无法动态改变dom内容，此时我们应gg该通过如下方式来修改：</em></strong></p><a id="more"></a><h3 id="一、修改属性"><a href="#一、修改属性" class="headerlink" title="一、修改属性"></a>一、修改属性</h3><ul><li><strong>1）、对象修改方式</strong></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$set</span>(this.data, <span class="string">"key"</span>,  value)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.set(this.data, <span class="string">"key"</span>, value)</span><br></pre></td></tr></table></figure><ul><li><strong>2)、数组修改方式</strong></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$set</span>(this.data, index,  value)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.set(this.data, index, value)</span><br></pre></td></tr></table></figure><h3 id="二、删除属性"><a href="#二、删除属性" class="headerlink" title="二、删除属性"></a>二、删除属性</h3><ul><li><strong>1）、对象修改方式</strong></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$delete</span>(this.data, <span class="string">"key"</span>)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.delete(this.data, <span class="string">"key"</span>)</span><br></pre></td></tr></table></figure><ul><li><strong>2）、数组修改方式</strong></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">mounted</span></span> () &#123;</span><br><span class="line">  this.<span class="variable">$delete</span>(this.data, index)</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">var vm = new Vue(&#123;..&#125;)</span><br><span class="line">vm.delete(this.data, index)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>VUE</category>
+          
+          <category> VUE </category>
+          
       </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>uni-app</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub-高级搜索</title>
-    <url>/2020/04/01/GitHub-%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h3 id="1-GitHub初级搜索使用"><a href="#1-GitHub初级搜索使用" class="headerlink" title="1. GitHub初级搜索使用"></a>1. GitHub初级搜索使用</h3><ol>
-<li><p>直接在搜索框里输入要检索的内容，然后不断的在列表里翻页查找，如：<br><img src="/uploads/GitHub/qb_01.png" alt="基础查询1"></p>
-<a id="more"></a>
-</li>
-<li><p>增加左侧的语言过滤项，如：<br><img src="/uploads/GitHub/qb_02.png" alt="Languages过滤"></p>
-</li>
-<li><p>修改一下列表排序方式，如：<br><img src="/uploads/GitHub/qb_03.png" alt="Sort过滤"></p>
-</li>
-</ol>
-<h3 id="2-GitHub高级搜索使用"><a href="#2-GitHub高级搜索使用" class="headerlink" title="2. GitHub高级搜索使用"></a>2. GitHub高级搜索使用</h3><ol>
-<li><p>根据仓库标题检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:name 关键字</span><br></pre></td></tr></table></figure>
-<p>如：<br><img src="/uploads/GitHub/qb_04.png" alt="name过滤"></p>
-</li>
-<li><p>根据项目描述检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:descripton 关键词</span><br></pre></td></tr></table></figure>
-<p>如：<br><img src="/uploads/GitHub/qb_05.png" alt="descripton过滤"></p>
-</li>
-<li><p>根据项目README文件检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:readme 关键词</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据stars数量检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   stars:&gt; 数字 关键字</span><br><span class="line">- 备注：不加比较呼号的时候，表示精确匹配数字，这一般比较困难（不常用）</span><br><span class="line">-   stars:1000..2000 关键词</span><br><span class="line">- - 表示查询指定数字区间的信息</span><br></pre></td></tr></table></figure>
-<p>如：检索star数大于3000 的 Spring Cloud 仓库<br><img src="/uploads/GitHub/qb_06.png" alt="descripton过滤"></p>
-</li>
-<li><p>根据fork数量检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   forks:&gt; 数字 关键字</span><br><span class="line">-   forks:1000..2000</span><br><span class="line">- 备注：原理和stars相同</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据项目大小检索，即占用磁盘容量</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   size:&gt;=5000 关键字</span><br><span class="line">- 备注：这里的数字代表 K， 即5000 代表 5M</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据仓库更新维护时间</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- 我们在确认是否要使用一些开源产品，框架的时候，是否继续维护是很重要的一点。如果已经过时没人维护的东西，踩了坑就不好办了。而在 GitHub 上找项目的时候，不再需要每个都点到项目里看看最近 push 的时间，直接在搜索框即可完成。</span><br><span class="line">-   pushed:&gt;2019-08-09 Spring Cloud</span><br></pre></td></tr></table></figure></li>
-<li><p>根据项目LICENSE检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   license:apache-2.0 Spring Cloud</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据仓库语言检索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   language:Python 关键词</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据人员查询</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   user:joshlong</span><br><span class="line">-   user:joshlong language:java</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据组织代码查询</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-   org:spring-cloud</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[ GitHub搜索帮助 ]: <span class="exturl" data-url="aHR0cHM6Ly9oZWxwLmdpdGh1Yi5jb20vY24vZ2l0aHViL3NlYXJjaGluZy1mb3ItaW5mb3JtYXRpb24tb24tZ2l0aHViL3NlYXJjaGluZy1vbi1naXRodWI=">https://help.github.com/cn/github/searching-for-information-on-github/searching-on-github<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> uni-app </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GitHub-高级搜索</title>
+      <link href="/2020/04/01/GitHub-%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2/"/>
+      <url>/2020/04/01/GitHub-%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-GitHub初级搜索使用"><a href="#1-GitHub初级搜索使用" class="headerlink" title="1. GitHub初级搜索使用"></a>1. GitHub初级搜索使用</h3><ol><li><p>直接在搜索框里输入要检索的内容，然后不断的在列表里翻页查找，如：<br><img src="/uploads/GitHub/qb_01.png" alt="基础查询1"></p><a id="more"></a></li><li><p>增加左侧的语言过滤项，如：<br><img src="/uploads/GitHub/qb_02.png" alt="Languages过滤"></p></li><li><p>修改一下列表排序方式，如：<br><img src="/uploads/GitHub/qb_03.png" alt="Sort过滤"></p></li></ol><h3 id="2-GitHub高级搜索使用"><a href="#2-GitHub高级搜索使用" class="headerlink" title="2. GitHub高级搜索使用"></a>2. GitHub高级搜索使用</h3><ol><li><p>根据仓库标题检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:name 关键字</span><br></pre></td></tr></table></figure><p>如：<br><img src="/uploads/GitHub/qb_04.png" alt="name过滤"></p></li><li><p>根据项目描述检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:descripton 关键词</span><br></pre></td></tr></table></figure><p>如：<br><img src="/uploads/GitHub/qb_05.png" alt="descripton过滤"></p></li><li><p>根据项目README文件检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-   <span class="keyword">in</span>:readme 关键词</span><br></pre></td></tr></table></figure></li><li><p>根据stars数量检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-   stars:&gt; 数字 关键字</span><br><span class="line">- 备注：不加比较呼号的时候，表示精确匹配数字，这一般比较困难（不常用）</span><br><span class="line">-   stars:1000..2000 关键词</span><br><span class="line">- - 表示查询指定数字区间的信息</span><br></pre></td></tr></table></figure><p>如：检索star数大于3000 的 Spring Cloud 仓库<br><img src="/uploads/GitHub/qb_06.png" alt="descripton过滤"></p></li><li><p>根据fork数量检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-   forks:&gt; 数字 关键字</span><br><span class="line">-   forks:1000..2000</span><br><span class="line">- 备注：原理和stars相同</span><br></pre></td></tr></table></figure></li><li><p>根据项目大小检索，即占用磁盘容量</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-   size:&gt;=5000 关键字</span><br><span class="line">- 备注：这里的数字代表 K， 即5000 代表 5M</span><br></pre></td></tr></table></figure></li><li><p>根据仓库更新维护时间</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 我们在确认是否要使用一些开源产品，框架的时候，是否继续维护是很重要的一点。如果已经过时没人维护的东西，踩了坑就不好办了。而在 GitHub 上找项目的时候，不再需要每个都点到项目里看看最近 push 的时间，直接在搜索框即可完成。</span><br><span class="line">-   pushed:&gt;2019-08-09 Spring Cloud</span><br></pre></td></tr></table></figure></li><li><p>根据项目LICENSE检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-   license:apache-2.0 Spring Cloud</span><br></pre></td></tr></table></figure></li><li><p>根据仓库语言检索</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-   language:Python 关键词</span><br></pre></td></tr></table></figure></li><li><p>根据人员查询</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-   user:joshlong</span><br><span class="line">-   user:joshlong language:java</span><br></pre></td></tr></table></figure></li><li><p>根据组织代码查询</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-   org:spring-cloud</span><br></pre></td></tr></table></figure><blockquote><p>[ GitHub搜索帮助 ]: <span class="exturl" data-url="aHR0cHM6Ly9oZWxwLmdpdGh1Yi5jb20vY24vZ2l0aHViL3NlYXJjaGluZy1mb3ItaW5mb3JtYXRpb24tb24tZ2l0aHViL3NlYXJjaGluZy1vbi1naXRodWI=">https://help.github.com/cn/github/searching-for-information-on-github/searching-on-github<i class="fa fa-external-link-alt"></i></span></p></blockquote></li></ol>]]></content>
+      
+      
       <categories>
-        <category>GitHub</category>
+          
+          <category> GitHub </category>
+          
       </categories>
-      <tags>
-        <tag>GitHub-高级检索</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CNN-卷积神经网络参数计算</title>
-    <url>/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/</url>
-    <content><![CDATA[<p><strong>卷积神经网络中的卷积过程的了解，对整个卷积神经网络的了解至关重要以下是个人认为比较好的入门讲解：</strong></p>
-<blockquote>
-<ul>
-<li>[ 卷积神经网络介绍1 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzI2Ni5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367266.html<i class="fa fa-external-link-alt"></i></span></li>
-<li>[ 卷积神经网络介绍2 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzMxNy5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367317.html<i class="fa fa-external-link-alt"></i></span></li>
-<li>[ 卷积神经网络介绍3 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzM0NC5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367344.html<i class="fa fa-external-link-alt"></i></span></li>
-<li>[  卷积基础 ]: <span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3M/X19iaXo9TXpVeU1qRTJNVEUwTXc9PSZhbXA7bWlkPTIyNDc0ODU2MzImYW1wO2lkeD0xJmFtcDtzbj1hMGI4NDJkMzg3Njg1NTY3ZjlmZjk0ZjNiZDE4MzJjMiZhbXA7Y2hrc209ZjlkMTU2NThjZWE2ZGY0ZWQzZjI0ZTQwNzEyMjhiNzgwYTgxMDczMTQ0NzQ0Mjg1NjNlNTYyMTUyYjliZThhYjg0MjhkMWZkNjJiNyZhbXA7c2NlbmU9MjEjd2VjaGF0X3JlZGlyZWN0">https://mp.weixin.qq.com/s?__biz=MzUyMjE2MTE0Mw==&amp;mid=2247485632&amp;idx=1&amp;sn=a0b842d387685567f9ff94f3bd1832c2&amp;chksm=f9d15658cea6df4ed3f24e4071228b780a8107314474428563e562152b9be8ab8428d1fd62b7&amp;scene=21#wechat_redirect<i class="fa fa-external-link-alt"></i></span></li>
-<li>[ 卷积神经网络-卷积与池化 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vemYtYmxvZy9wLzYwNzUyODYuaHRtbA==">https://www.cnblogs.com/zf-blog/p/6075286.html<i class="fa fa-external-link-alt"></i></span></li>
-<li>[ 卷积神经网络中的参数计算 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvNzYyNDgwNy5odG1s">https://www.cnblogs.com/hejunlin1992/p/7624807.html<i class="fa fa-external-link-alt"></i></span></li>
-<li>[ 卷积神经网络与反卷积 ]: <span class="exturl" data-url="aHR0cHM6Ly9idXB0bGR5LmdpdGh1Yi5pby8yMDE2LzEwLzI5LzIwMTYtMTAtMjktZGVjb252Lw==">https://buptldy.github.io/2016/10/29/2016-10-29-deconv/<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-</blockquote>
-<a id="more"></a>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> GitHub-高级检索 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CNN-卷积神经网络参数计算</title>
+      <link href="/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/"/>
+      <url>/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/</url>
+      
+        <content type="html"><![CDATA[<p><strong>卷积神经网络中的卷积过程的了解，对整个卷积神经网络的了解至关重要以下是个人认为比较好的入门讲解：</strong></p><blockquote><ul><li>[ 卷积神经网络介绍1 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzI2Ni5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367266.html<i class="fa fa-external-link-alt"></i></span></li><li>[ 卷积神经网络介绍2 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzMxNy5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367317.html<i class="fa fa-external-link-alt"></i></span></li><li>[ 卷积神经网络介绍3 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzM0NC5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367344.html<i class="fa fa-external-link-alt"></i></span></li><li>[  卷积基础 ]: <span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3M/X19iaXo9TXpVeU1qRTJNVEUwTXc9PSZhbXA7bWlkPTIyNDc0ODU2MzImYW1wO2lkeD0xJmFtcDtzbj1hMGI4NDJkMzg3Njg1NTY3ZjlmZjk0ZjNiZDE4MzJjMiZhbXA7Y2hrc209ZjlkMTU2NThjZWE2ZGY0ZWQzZjI0ZTQwNzEyMjhiNzgwYTgxMDczMTQ0NzQ0Mjg1NjNlNTYyMTUyYjliZThhYjg0MjhkMWZkNjJiNyZhbXA7c2NlbmU9MjEjd2VjaGF0X3JlZGlyZWN0">https://mp.weixin.qq.com/s?__biz=MzUyMjE2MTE0Mw==&amp;mid=2247485632&amp;idx=1&amp;sn=a0b842d387685567f9ff94f3bd1832c2&amp;chksm=f9d15658cea6df4ed3f24e4071228b780a8107314474428563e562152b9be8ab8428d1fd62b7&amp;scene=21#wechat_redirect<i class="fa fa-external-link-alt"></i></span></li><li>[ 卷积神经网络-卷积与池化 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vemYtYmxvZy9wLzYwNzUyODYuaHRtbA==">https://www.cnblogs.com/zf-blog/p/6075286.html<i class="fa fa-external-link-alt"></i></span></li><li>[ 卷积神经网络中的参数计算 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvNzYyNDgwNy5odG1s">https://www.cnblogs.com/hejunlin1992/p/7624807.html<i class="fa fa-external-link-alt"></i></span></li><li>[ 卷积神经网络与反卷积 ]: <span class="exturl" data-url="aHR0cHM6Ly9idXB0bGR5LmdpdGh1Yi5pby8yMDE2LzEwLzI5LzIwMTYtMTAtMjktZGVjb252Lw==">https://buptldy.github.io/2016/10/29/2016-10-29-deconv/<i class="fa fa-external-link-alt"></i></span></li></ul></blockquote><a id="more"></a>]]></content>
+      
+      
       <categories>
-        <category>ML-机器学习</category>
+          
+          <category> ML-机器学习 </category>
+          
       </categories>
-      <tags>
-        <tag>CNN-卷积神经网络</tag>
-        <tag>卷积计算过程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ML-知识体系</title>
-    <url>/2020/03/30/ML-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<h3 id="机器学习知识图谱"><a href="#机器学习知识图谱" class="headerlink" title="机器学习知识图谱"></a>机器学习知识图谱</h3><ul>
-<li><p>机器学习包含多交叉学科，同时也在很多方面得到应用，如自然语言处理、图像处理、数据挖掘、推荐系统领域等。</p>
-</li>
-<li><p>机器学习包含监督学习、无监督学习、半监督学习、强化学习、深度学习、迁移学习等，还有各种工具和框架的应用，因此Machine Learning的过程也是漫长而有趣的。<br><img src="/uploads/ML/ML-01.jpg" alt="ML-01"></p>
-<a id="more"></a>
-</li>
-<li><p>下图为开发者平台CSDN上王小雷整理的机器学习算法汇总，其中包含很多机器学习算法，知识体系较为庞大。<br><img src="/uploads/ML/ML-02.jpg" alt="ML-02"></p>
-</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> CNN-卷积神经网络 </tag>
+            
+            <tag> 卷积计算过程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ML-知识体系</title>
+      <link href="/2020/03/30/ML-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/"/>
+      <url>/2020/03/30/ML-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<h3 id="机器学习知识图谱"><a href="#机器学习知识图谱" class="headerlink" title="机器学习知识图谱"></a>机器学习知识图谱</h3><ul><li><p>机器学习包含多交叉学科，同时也在很多方面得到应用，如自然语言处理、图像处理、数据挖掘、推荐系统领域等。</p></li><li><p>机器学习包含监督学习、无监督学习、半监督学习、强化学习、深度学习、迁移学习等，还有各种工具和框架的应用，因此Machine Learning的过程也是漫长而有趣的。<br><img src="/uploads/ML/ML-01.jpg" alt="ML-01"></p><a id="more"></a></li><li><p>下图为开发者平台CSDN上王小雷整理的机器学习算法汇总，其中包含很多机器学习算法，知识体系较为庞大。<br><img src="/uploads/ML/ML-02.jpg" alt="ML-02"></p></li></ul>]]></content>
+      
+      
       <categories>
-        <category>ML-机器学习</category>
+          
+          <category> ML-机器学习 </category>
+          
       </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-NexT主题添加搜索功能</title>
-    <url>/2020/03/30/Hexo-NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<h3 id="1-安装search插件"><a href="#1-安装search插件" class="headerlink" title="1. 安装search插件"></a>1. 安装search插件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-在主题目录-theme-next-config-yml文件中新增如下配置："><a href="#2-在主题目录-theme-next-config-yml文件中新增如下配置：" class="headerlink" title="2. 在主题目录/theme/next/_config.yml文件中新增如下配置："></a>2. 在主题目录/theme/next/_config.yml文件中新增如下配置：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h3 id="3-在主题目录-theme-next-config-yml文件中搜索-local-search-将-enable-修改为-true"><a href="#3-在主题目录-theme-next-config-yml文件中搜索-local-search-将-enable-修改为-true" class="headerlink" title="3. 在主题目录/theme/next/_config.yml文件中搜索 local_search , 将 enable 修改为 true"></a>3. 在主题目录/theme/next/_config.yml文件中搜索 <code>local_search</code> , 将 <code>enable</code> 修改为 <code>true</code></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-重新编译站点即可"><a href="#4-重新编译站点即可" class="headerlink" title="4. 重新编译站点即可"></a>4. 重新编译站点即可</h3>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo-NexT主题添加搜索功能</title>
+      <link href="/2020/03/30/Hexo-NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/"/>
+      <url>/2020/03/30/Hexo-NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-安装search插件"><a href="#1-安装search插件" class="headerlink" title="1. 安装search插件"></a>1. 安装search插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure><h3 id="2-在主题目录-theme-next-config-yml文件中新增如下配置："><a href="#2-在主题目录-theme-next-config-yml文件中新增如下配置：" class="headerlink" title="2. 在主题目录/theme/next/_config.yml文件中新增如下配置："></a>2. 在主题目录/theme/next/_config.yml文件中新增如下配置：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="3-在主题目录-theme-next-config-yml文件中搜索-local-search-将-enable-修改为-true"><a href="#3-在主题目录-theme-next-config-yml文件中搜索-local-search-将-enable-修改为-true" class="headerlink" title="3. 在主题目录/theme/next/_config.yml文件中搜索 local_search , 将 enable 修改为 true"></a>3. 在主题目录/theme/next/_config.yml文件中搜索 <code>local_search</code> , 将 <code>enable</code> 修改为 <code>true</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure><h3 id="4-重新编译站点即可"><a href="#4-重新编译站点即可" class="headerlink" title="4. 重新编译站点即可"></a>4. 重新编译站点即可</h3>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于IE8的getElementById不再支持name属性</title>
-    <url>/2020/03/30/%E5%85%B3%E4%BA%8EIE8%E7%9A%84getElementById%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81name%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<h3 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 这两天发现公司内部一个比较老旧的系统，突然间无法正常使用，页面脚本错误：getElementById（）不是一个对象。</span><br><span class="line">当前使用的IE浏览器版本为8</span><br><span class="line">2. 经过页面调试，发现页面获取对象使用的方式为：document.getElementById(<span class="string">"elementName"</span>).avlue</span><br><span class="line">3. 看到上面的代码，第一反应是这肯定有问题，因为根据getElementById的定义是不允许通过传入elementName获取元素对象的，</span><br><span class="line">但是仔细思考后发现，这个系统已经使用好多年，肯定不是getElementById问题</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h3 id="2-问题查询"><a href="#2-问题查询" class="headerlink" title="2. 问题查询"></a>2. 问题查询</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">经过一番查询得出如下结论：</span><br><span class="line">1. 在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 name 属性值为 elementName 的 A APPLET BUTTON FORM IFRAME IMG INPUT MAP META OBJECT EMBED SELECT TEXTAREA 元素。</span><br><span class="line">2. 再IE6 IE7 IE8(Q)版本中，类似</span><br><span class="line">    - &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"txt1"</span>&gt;都可以使用</span><br><span class="line">    - var obj = document.getElementById(<span class="string">"txt1"</span>);来取得对象</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-造成的影响"><a href="#3-造成的影响" class="headerlink" title="3. 造成的影响"></a>3. 造成的影响</h3><font face="微软雅黑" color="red" size="2">
-    该问题将导致在某些浏览器内无法获取到目标元素。
-</font>
-
-<h3 id="4-问题分析"><a href="#4-问题分析" class="headerlink" title="4. 问题分析"></a>4. 问题分析</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- 分析代码如下：</span><br><span class="line">- &lt;body&gt;</span><br><span class="line">&lt;div id=<span class="string">"output"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var $=<span class="keyword">function</span>(id)&#123;<span class="built_in">return</span> document.getElementById(id);&#125;;</span><br><span class="line">var tags=[<span class="string">'A'</span>,<span class="string">'ABBR'</span>,<span class="string">'ACRONYM'</span>,<span class="string">'ADDRESS'</span>,<span class="string">'APPLET'</span>,<span class="string">'AREA'</span>,<span class="string">'B'</span>,<span class="string">'BDO'</span>,<span class="string">'BIG'</span>,<span class="string">'BLOCKQUOTE'</span>,<span class="string">'BR'</span>,<span class="string">'BUTTON'</span>,<span class="string">'CAPTION'</span>,<span class="string">'CENTER'</span>,<span class="string">'CITE'</span>,<span class="string">'CODE'</span>,<span class="string">'COL'</span>,<span class="string">'COLGROUP'</span>,<span class="string">'DD'</span>,<span class="string">'DEL'</span>,<span class="string">'DIR'</span>,<span class="string">'DIV'</span>,<span class="string">'DFN'</span>,<span class="string">'DL'</span>,<span class="string">'DT'</span>,<span class="string">'EM'</span>,<span class="string">'FIELDSET'</span>,<span class="string">'FONT'</span>,<span class="string">'FORM'</span>,<span class="string">'FRAME'</span>,<span class="string">'FRAMESET'</span>,<span class="string">'H1'</span>,<span class="string">'H6'</span>,<span class="string">'HR'</span>,<span class="string">'I'</span>,<span class="string">'IFRAME'</span>,<span class="string">'IMG'</span>,<span class="string">'INPUT'</span>,<span class="string">'INS'</span>,<span class="string">'ISINDEX'</span>,<span class="string">'KBD'</span>,<span class="string">'LABEL'</span>,<span class="string">'LEGEND'</span>,<span class="string">'LI'</span>,<span class="string">'LINK'</span>,<span class="string">'MAP'</span>,<span class="string">'MENU'</span>,<span class="string">'META'</span>,<span class="string">'NOFRAMES'</span>,<span class="string">'NOSCRIPT'</span>,<span class="string">'OBJECT'</span>,<span class="string">'OL'</span>,<span class="string">'OPTGROUP'</span>,<span class="string">'OPTION'</span>,<span class="string">'EMBED'</span>,<span class="string">'P'</span>,<span class="string">'PRE'</span>,<span class="string">'Q'</span>,<span class="string">'S'</span>,<span class="string">'SAMP'</span>,<span class="string">'SCRIPT'</span>,<span class="string">'SELECT'</span>,<span class="string">'SMALL'</span>,<span class="string">'SPAN'</span>,<span class="string">'STRIKE'</span>,<span class="string">'STRONG'</span>,<span class="string">'STYLE'</span>,<span class="string">'SUB'</span>,<span class="string">'SUP'</span>,<span class="string">'TABLE'</span>,<span class="string">'TBODY'</span>,<span class="string">'TD'</span>,<span class="string">'TEXTAREA'</span>,<span class="string">'TFOOT'</span>,<span class="string">'TH'</span>,<span class="string">'THEAD'</span>,<span class="string">'TITLE'</span>,<span class="string">'TR'</span>,<span class="string">'TT'</span>,<span class="string">'U'</span>,<span class="string">'UL'</span>,<span class="string">'VAR'</span>,<span class="string">'XMP'</span>] ;</span><br><span class="line"><span class="keyword">for</span>(i=0;i&lt;tags.length;i++)&#123;</span><br><span class="line">  var tag=tags[i];</span><br><span class="line">  document.writeln(<span class="string">'&lt;'</span>+tag+<span class="string">' name="name_'</span>+tag+<span class="string">'"&gt;&lt;/'</span>+tag+<span class="string">'&gt;'</span>);</span><br><span class="line">  $(<span class="string">'output'</span>).innerHTML+=$(<span class="string">'name_'</span>+tag)?tag+<span class="string">" "</span>:<span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">- 以上代码在页面中顺次创建各元素，并尝试以 document.getElementById(elementName) 的方式来获取各元素。</span><br></pre></td></tr></table></figure>
-<p><strong>在各浏览器输出如下：</strong></p>
-<table>
-<thead>
-<tr>
-<th>IE6 IE7 IE8(Q)</th>
-<th>其他浏览器</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A APPLET BUTTON FORM IFRAME IMG INPUT MAP META OBJECT EMBED SELECT TEXTAREA</td>
-<td>无</td>
-</tr>
-</tbody></table>
-<p><strong>可见：在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式.</strong></p>
-<h3 id="5-问题解决方式"><a href="#5-问题解决方式" class="headerlink" title="5. 问题解决方式"></a>5. 问题解决方式</h3><p><strong>在使用 document.getElementById 方法获取页面元素时，应传入元素的 id 属性值，而不能使用元素的 name 属性值。同时需注意页面中的元素的 id 属性值不能与其他元素的 name 属性值有重复.</strong></p>
-<blockquote>
-<p>[ ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY29vbGdhbWUvcC8zNTY2MTg3Lmh0bWw=">https://www.cnblogs.com/coolgame/p/3566187.html<i class="fa fa-external-link-alt"></i></span> IE8(Q)与IE8(S)区别</p>
-</blockquote>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Hexo博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于IE8的getElementById不再支持name属性</title>
+      <link href="/2020/03/30/%E5%85%B3%E4%BA%8EIE8%E7%9A%84getElementById%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81name%E5%B1%9E%E6%80%A7/"/>
+      <url>/2020/03/30/%E5%85%B3%E4%BA%8EIE8%E7%9A%84getElementById%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81name%E5%B1%9E%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 这两天发现公司内部一个比较老旧的系统，突然间无法正常使用，页面脚本错误：getElementById（）不是一个对象。</span><br><span class="line">当前使用的IE浏览器版本为8</span><br><span class="line">2. 经过页面调试，发现页面获取对象使用的方式为：document.getElementById(<span class="string">"elementName"</span>).avlue</span><br><span class="line">3. 看到上面的代码，第一反应是这肯定有问题，因为根据getElementById的定义是不允许通过传入elementName获取元素对象的，</span><br><span class="line">但是仔细思考后发现，这个系统已经使用好多年，肯定不是getElementById问题</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="2-问题查询"><a href="#2-问题查询" class="headerlink" title="2. 问题查询"></a>2. 问题查询</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">经过一番查询得出如下结论：</span><br><span class="line">1. 在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 name 属性值为 elementName 的 A APPLET BUTTON FORM IFRAME IMG INPUT MAP META OBJECT EMBED SELECT TEXTAREA 元素。</span><br><span class="line">2. 再IE6 IE7 IE8(Q)版本中，类似</span><br><span class="line">    - &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"txt1"</span>&gt;都可以使用</span><br><span class="line">    - var obj = document.getElementById(<span class="string">"txt1"</span>);来取得对象</span><br></pre></td></tr></table></figure><h3 id="3-造成的影响"><a href="#3-造成的影响" class="headerlink" title="3. 造成的影响"></a>3. 造成的影响</h3><font face="微软雅黑" color="red" size="2">    该问题将导致在某些浏览器内无法获取到目标元素。</font><h3 id="4-问题分析"><a href="#4-问题分析" class="headerlink" title="4. 问题分析"></a>4. 问题分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- 分析代码如下：</span><br><span class="line">- &lt;body&gt;</span><br><span class="line">&lt;div id=<span class="string">"output"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var $=<span class="keyword">function</span>(id)&#123;<span class="built_in">return</span> document.getElementById(id);&#125;;</span><br><span class="line">var tags=[<span class="string">'A'</span>,<span class="string">'ABBR'</span>,<span class="string">'ACRONYM'</span>,<span class="string">'ADDRESS'</span>,<span class="string">'APPLET'</span>,<span class="string">'AREA'</span>,<span class="string">'B'</span>,<span class="string">'BDO'</span>,<span class="string">'BIG'</span>,<span class="string">'BLOCKQUOTE'</span>,<span class="string">'BR'</span>,<span class="string">'BUTTON'</span>,<span class="string">'CAPTION'</span>,<span class="string">'CENTER'</span>,<span class="string">'CITE'</span>,<span class="string">'CODE'</span>,<span class="string">'COL'</span>,<span class="string">'COLGROUP'</span>,<span class="string">'DD'</span>,<span class="string">'DEL'</span>,<span class="string">'DIR'</span>,<span class="string">'DIV'</span>,<span class="string">'DFN'</span>,<span class="string">'DL'</span>,<span class="string">'DT'</span>,<span class="string">'EM'</span>,<span class="string">'FIELDSET'</span>,<span class="string">'FONT'</span>,<span class="string">'FORM'</span>,<span class="string">'FRAME'</span>,<span class="string">'FRAMESET'</span>,<span class="string">'H1'</span>,<span class="string">'H6'</span>,<span class="string">'HR'</span>,<span class="string">'I'</span>,<span class="string">'IFRAME'</span>,<span class="string">'IMG'</span>,<span class="string">'INPUT'</span>,<span class="string">'INS'</span>,<span class="string">'ISINDEX'</span>,<span class="string">'KBD'</span>,<span class="string">'LABEL'</span>,<span class="string">'LEGEND'</span>,<span class="string">'LI'</span>,<span class="string">'LINK'</span>,<span class="string">'MAP'</span>,<span class="string">'MENU'</span>,<span class="string">'META'</span>,<span class="string">'NOFRAMES'</span>,<span class="string">'NOSCRIPT'</span>,<span class="string">'OBJECT'</span>,<span class="string">'OL'</span>,<span class="string">'OPTGROUP'</span>,<span class="string">'OPTION'</span>,<span class="string">'EMBED'</span>,<span class="string">'P'</span>,<span class="string">'PRE'</span>,<span class="string">'Q'</span>,<span class="string">'S'</span>,<span class="string">'SAMP'</span>,<span class="string">'SCRIPT'</span>,<span class="string">'SELECT'</span>,<span class="string">'SMALL'</span>,<span class="string">'SPAN'</span>,<span class="string">'STRIKE'</span>,<span class="string">'STRONG'</span>,<span class="string">'STYLE'</span>,<span class="string">'SUB'</span>,<span class="string">'SUP'</span>,<span class="string">'TABLE'</span>,<span class="string">'TBODY'</span>,<span class="string">'TD'</span>,<span class="string">'TEXTAREA'</span>,<span class="string">'TFOOT'</span>,<span class="string">'TH'</span>,<span class="string">'THEAD'</span>,<span class="string">'TITLE'</span>,<span class="string">'TR'</span>,<span class="string">'TT'</span>,<span class="string">'U'</span>,<span class="string">'UL'</span>,<span class="string">'VAR'</span>,<span class="string">'XMP'</span>] ;</span><br><span class="line"><span class="keyword">for</span>(i=0;i&lt;tags.length;i++)&#123;</span><br><span class="line">  var tag=tags[i];</span><br><span class="line">  document.writeln(<span class="string">'&lt;'</span>+tag+<span class="string">' name="name_'</span>+tag+<span class="string">'"&gt;&lt;/'</span>+tag+<span class="string">'&gt;'</span>);</span><br><span class="line">  $(<span class="string">'output'</span>).innerHTML+=$(<span class="string">'name_'</span>+tag)?tag+<span class="string">" "</span>:<span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">- 以上代码在页面中顺次创建各元素，并尝试以 document.getElementById(elementName) 的方式来获取各元素。</span><br></pre></td></tr></table></figure><p><strong>在各浏览器输出如下：</strong></p><table><thead><tr><th>IE6 IE7 IE8(Q)</th><th>其他浏览器</th></tr></thead><tbody><tr><td>A APPLET BUTTON FORM IFRAME IMG INPUT MAP META OBJECT EMBED SELECT TEXTAREA</td><td>无</td></tr></tbody></table><p><strong>可见：在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式.</strong></p><h3 id="5-问题解决方式"><a href="#5-问题解决方式" class="headerlink" title="5. 问题解决方式"></a>5. 问题解决方式</h3><p><strong>在使用 document.getElementById 方法获取页面元素时，应传入元素的 id 属性值，而不能使用元素的 name 属性值。同时需注意页面中的元素的 id 属性值不能与其他元素的 name 属性值有重复.</strong></p><blockquote><p>[ ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY29vbGdhbWUvcC8zNTY2MTg3Lmh0bWw=">https://www.cnblogs.com/coolgame/p/3566187.html<i class="fa fa-external-link-alt"></i></span> IE8(Q)与IE8(S)区别</p></blockquote>]]></content>
+      
+      
       <categories>
-        <category>前端开发</category>
+          
+          <category> 前端开发 </category>
+          
       </categories>
-      <tags>
-        <tag>IE8 getElementById</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-NexT下配置个人域名</title>
-    <url>/2020/03/29/Hexo-NexT%E4%B8%8B%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/</url>
-    <content><![CDATA[<h3 id="1-购买域名"><a href="#1-购买域名" class="headerlink" title="1. 购买域名"></a>1. 购买域名</h3><ul>
-<li>各大云厂商都提供了域名购买服务如：</li>
-</ul>
-<ul>
-<li>阿里云</li>
-<li>百度云</li>
-<li>腾讯云<a id="more"></a>
-<h3 id="2-添加个人域名"><a href="#2-添加个人域名" class="headerlink" title="2. 添加个人域名"></a>2. 添加个人域名</h3></li>
-</ul>
-<ol>
-<li>到NexT主题目录<code>source</code>文件夹中创建<code>GNAME</code>文件,此文件没有后缀名。</li>
-<li>把个人域名（wifly.top）添加到<code>GNAME</code>文件中。</li>
-<li>重新编译-部署网站即可。</li>
-</ol>
-<h3 id="3-域名解析配置"><a href="#3-域名解析配置" class="headerlink" title="3. 域名解析配置"></a>3. 域名解析配置</h3><ol>
-<li>进入域名管理控制台，如我的<code>wifly.top为阿里云</code>购买,登陆阿里云官网，进入控制台中设置域名解析如下：</li>
-</ol>
-<ul>
-<li><ul>
-<li>记录类型：CNAME</li>
-</ul>
-</li>
-<li><ul>
-<li>主机记录：@</li>
-</ul>
-</li>
-<li><ul>
-<li>解析线路：默认</li>
-</ul>
-</li>
-<li><ul>
-<li>记录值：wifly.top</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>解析成功后，等待几分钟便可登陆到<a href="wifly.top">FlyBlog</a>查看网站内容。</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> IE8 getElementById </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo-NexT下配置个人域名</title>
+      <link href="/2020/03/29/Hexo-NexT%E4%B8%8B%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/"/>
+      <url>/2020/03/29/Hexo-NexT%E4%B8%8B%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-购买域名"><a href="#1-购买域名" class="headerlink" title="1. 购买域名"></a>1. 购买域名</h3><ul><li>各大云厂商都提供了域名购买服务如：</li></ul><ul><li>阿里云</li><li>百度云</li><li>腾讯云<a id="more"></a><h3 id="2-添加个人域名"><a href="#2-添加个人域名" class="headerlink" title="2. 添加个人域名"></a>2. 添加个人域名</h3></li></ul><ol><li>到NexT主题目录<code>source</code>文件夹中创建<code>GNAME</code>文件,此文件没有后缀名。</li><li>把个人域名（wifly.top）添加到<code>GNAME</code>文件中。</li><li>重新编译-部署网站即可。</li></ol><h3 id="3-域名解析配置"><a href="#3-域名解析配置" class="headerlink" title="3. 域名解析配置"></a>3. 域名解析配置</h3><ol><li>进入域名管理控制台，如我的<code>wifly.top为阿里云</code>购买,登陆阿里云官网，进入控制台中设置域名解析如下：</li></ol><ul><li><ul><li>记录类型：CNAME</li></ul></li><li><ul><li>主机记录：@</li></ul></li><li><ul><li>解析线路：默认</li></ul></li><li><ul><li>记录值：wifly.top</li></ul></li></ul><ol start="2"><li>解析成功后，等待几分钟便可登陆到<a href="wifly.top">FlyBlog</a>查看网站内容。</li></ol>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-NexT主题下设置不显示全文</title>
-    <url>/2020/03/29/Hexo-NexT%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%85%A8%E6%96%87/</url>
-    <content><![CDATA[<h3 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h3><ul>
-<li>NexT是Hexo的一个博客主题，在这个主题下默认文章都是全文展示的，不方便概览。</li>
-<li>期望效果：首页只显示文章列表，列表里面的每一篇文章只显示预览，不显示全文。</li>
-</ul>
-<h3 id="2-解决方式"><a href="#2-解决方式" class="headerlink" title="2. 解决方式"></a>2. 解决方式</h3><ol>
-<li>进入hexo博客项目的<code>themes\next</code>目录</li>
-<li>用文本编辑器打开 <code>_config.yml</code>文件</li>
-<li>搜索<code>auto_excerpt</code>找到如下内容：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Automatically Excerpt. Not recommand.</span></span><br><span class="line"><span class="comment"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</span></span><br><span class="line">auto_excerpt:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">false</span></span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li>
-<li>把<code>enable</code>中的<code>false</code>修改为<code>true</code>,然后重新编译部署博客即可。<a id="more"></a>
-</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Hexo博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo-NexT主题下设置不显示全文</title>
+      <link href="/2020/03/29/Hexo-NexT%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%85%A8%E6%96%87/"/>
+      <url>/2020/03/29/Hexo-NexT%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%85%A8%E6%96%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h3><ul><li>NexT是Hexo的一个博客主题，在这个主题下默认文章都是全文展示的，不方便概览。</li><li>期望效果：首页只显示文章列表，列表里面的每一篇文章只显示预览，不显示全文。</li></ul><h3 id="2-解决方式"><a href="#2-解决方式" class="headerlink" title="2. 解决方式"></a>2. 解决方式</h3><ol><li>进入hexo博客项目的<code>themes\next</code>目录</li><li>用文本编辑器打开 <code>_config.yml</code>文件</li><li>搜索<code>auto_excerpt</code>找到如下内容：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Automatically Excerpt. Not recommand.</span></span><br><span class="line"><span class="comment"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</span></span><br><span class="line">auto_excerpt:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">false</span></span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li><li>把<code>enable</code>中的<code>false</code>修改为<code>true</code>,然后重新编译部署博客即可。<a id="more"></a></li></ol>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo搭建博客标签-分类报错</title>
-    <url>/2020/03/29/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A0%87%E7%AD%BE-%E5%88%86%E7%B1%BB%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h3 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 在主题配置文件（_config.yml）Menu 下打开about、categories、tags</span><br><span class="line">2. 部署后访问 about、categories、tags 均出现如下问题：</span><br><span class="line">    Cannot GET /about/</span><br><span class="line">    Cannot GET /tags/</span><br><span class="line">    Cannot GET /categories/</span><br><span class="line">3. 出现如上问题是因为缺少对应资源文件，分别执行如下命令：</span><br><span class="line">    hexo new page about</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h3 id="2-解决方式"><a href="#2-解决方式" class="headerlink" title="2. 解决方式"></a>2. 解决方式</h3><ol>
-<li>添加模块<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page about</span><br><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure></li>
-<li>执行上述命令后，会发现在<code>source</code>文件夹下多出 <code>about\index.md</code> <code>tags/index.md</code> <code>categories\index.md</code></li>
-<li>分别在 <code>index.md</code> 文件中添加 <code>type:xxx</code> xxx:对应与导航标签名称</li>
-<li>为了把文章自动归类，需要在新建文章时，在标题下方添加 <code>categories: 分类名称</code> 字段，</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Hexo博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo搭建博客标签-分类报错</title>
+      <link href="/2020/03/29/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A0%87%E7%AD%BE-%E5%88%86%E7%B1%BB%E6%8A%A5%E9%94%99/"/>
+      <url>/2020/03/29/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%A0%87%E7%AD%BE-%E5%88%86%E7%B1%BB%E6%8A%A5%E9%94%99/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 在主题配置文件（_config.yml）Menu 下打开about、categories、tags</span><br><span class="line">2. 部署后访问 about、categories、tags 均出现如下问题：</span><br><span class="line">    Cannot GET /about/</span><br><span class="line">    Cannot GET /tags/</span><br><span class="line">    Cannot GET /categories/</span><br><span class="line">3. 出现如上问题是因为缺少对应资源文件，分别执行如下命令：</span><br><span class="line">    hexo new page about</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="2-解决方式"><a href="#2-解决方式" class="headerlink" title="2. 解决方式"></a>2. 解决方式</h3><ol><li>添加模块<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure></li><li>执行上述命令后，会发现在<code>source</code>文件夹下多出 <code>about\index.md</code> <code>tags/index.md</code> <code>categories\index.md</code></li><li>分别在 <code>index.md</code> 文件中添加 <code>type:xxx</code> xxx:对应与导航标签名称</li><li>为了把文章自动归类，需要在新建文章时，在标题下方添加 <code>categories: 分类名称</code> 字段，</li></ol>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MarkDown-语法</title>
-    <url>/2020/03/29/MarkDown-%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-<p>如：</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><a id="more"></a>
-
-<h3 id="2-字体设置"><a href="#2-字体设置" class="headerlink" title="2. 字体设置"></a>2. 字体设置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">** 文字前后加**表示粗体</span><br><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
-<p>如：<strong>粗体</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 文字前后加*表示斜体</span><br><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
-<p>如：<em>斜体</em></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*** 文字前后加***表示粗斜体</span><br><span class="line">***粗斜体***</span><br></pre></td></tr></table></figure>
-
-<p>如：<strong><em>粗斜体</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;u&gt; &lt;&#x2F;u&gt; 文字前后加&lt;u&gt;&lt;&#x2F;u&gt;表示下划线</span><br></pre></td></tr></table></figure>
-
-<p>如：<u>下划线</u></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~ 文字前后加~~表示删除线</span><br><span class="line">~~删除线~~</span><br></pre></td></tr></table></figure>
-
-<p>如：<del>删除线</del></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#96; 文字前后加&#96;表示标记，该符号位于Esc下面，英文状态下符号</span><br><span class="line">&#96;标记&#96;</span><br></pre></td></tr></table></figure>
-
-<p>如：<code>标记</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Html标签</span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体颜色和大小&lt;&#x2F;font&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如：<font face="微软雅黑" color="red" size="6">字体颜色和大小</font></p>
-<h3 id="3-列表"><a href="#3-列表" class="headerlink" title="3. 列表"></a>3. 列表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">- 采用 1. 后加空格形式表示有序列表</span><br><span class="line">1. 有序列表1</span><br><span class="line">2. 有序列表2</span><br><span class="line">3. 有序列表3</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<ol>
-<li><p>有序列表1</p>
-</li>
-<li><p>有序列表2</p>
-</li>
-<li><p>有序列表3</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">无效列表</span><br><span class="line">- 采用+ - * &#x3D; 符号表示无效列表，支持多级嵌套（之间用空格分隔）</span><br><span class="line">+ 无序列表1</span><br><span class="line">+ + 无序列表1.1</span><br><span class="line">+ + 无序列表1.2</span><br><span class="line">+ 无序列表2</span><br><span class="line">+ 无序列表3</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<ul>
-<li>无序列表1</li>
-<li><ul>
-<li>无序列表1.1</li>
-</ul>
-</li>
-<li><ul>
-<li>无序列表1.2</li>
-</ul>
-</li>
-<li>无序列表2</li>
-<li>无序列表3</li>
-</ul>
-<p>如：</p>
-<ul>
-<li>无序列表1</li>
-<li><ul>
-<li>无序列表1.1</li>
-</ul>
-</li>
-<li>无序列表2</li>
-</ul>
-<p>如：</p>
-<ul>
-<li>无序列表1</li>
-<li><ul>
-<li>无序列表1.1</li>
-</ul>
-</li>
-<li>无序列表2</li>
-</ul>
-<p>如：</p>
-<ul>
-<li>无序列表1</li>
-<li><ul>
-<li><ol>
-<li>有序列表1.1</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ol start="2">
-<li>有序列表1.2</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>无序列表2</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">未完成列表</span><br><span class="line">- 采用 - [ ] 表示未完成任务，符号之间用空格分隔</span><br><span class="line">- [ ] 未完成任务1</span><br><span class="line">- [ ] 未完成任务2</span><br><span class="line">- [ ] 未完成任务3</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<ul>
-<li><input disabled="" type="checkbox"> <p>未完成任务1</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>未完成任务2</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>未完成任务3</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">已完成任务</span><br><span class="line">- 采用 - [x] 表示已完成任务，各符号之间均有空格，同时可直接在未完成任务间✔来转换成已完成任务</span><br><span class="line">- [x] 已完成任务1</span><br><span class="line">- [x] 已完成任务2</span><br><span class="line">- [x] 已完成任务3</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务1</li>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务2</li>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务3</li>
-</ul>
-<h3 id="4-表格"><a href="#4-表格" class="headerlink" title="4. 表格"></a>4. 表格</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表格对齐方式</span><br><span class="line"> 居左：:----</span><br><span class="line"> 居中：:----: 或 ----</span><br><span class="line"> 居右：-----:</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">标题1</th>
-<th align="center">标题2</th>
-<th align="right">标题3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">居左测试文本</td>
-<td align="center">居中测试文本</td>
-<td align="right">居右测试问题</td>
-</tr>
-<tr>
-<td align="left">居左测试文本</td>
-<td align="center">居中测试文本</td>
-<td align="right">居右测试问题</td>
-</tr>
-</tbody></table>
-<h3 id="5-段落-换行"><a href="#5-段落-换行" class="headerlink" title="5. 段落 换行"></a>5. 段落 换行</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首行缩进方式</span><br><span class="line">&amp;emsp; 中文空格</span><br><span class="line">&amp;ensp; 半中文空格</span><br><span class="line">&amp;nbsp; 英文空格</span><br><span class="line">输入法切换全角双击空格</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<p>&emsp; 中文空格</p>
-<p>&ensp; 半中文空格</p>
-<p>&nbsp; 英文空格</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">换行</span><br><span class="line">- 换行处连续打两个空格</span><br><span class="line">- 换行处使用&lt;br&gt;进行换行</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<p>  换行  你好<br>hello</p>
-<h3 id="6-引用和代码块"><a href="#6-引用和代码块" class="headerlink" title="6. 引用和代码块"></a>6. 引用和代码块</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引用</span><br><span class="line">&gt; 引用1</span><br><span class="line">&gt; &gt; 引用1.1</span><br><span class="line">&gt; &gt; 引用1.2</span><br><span class="line">&gt; 引用2</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<blockquote>
-<p>引用1</p>
-<blockquote>
-<p>应用1.1<br>引用1.2</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>引用2</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">代码块</span><br><span class="line">- 代码前后添加&#96;&#96;&#96;表示代码块</span><br><span class="line">      &#96;&#96;&#96;Python</span><br><span class="line">        print(&#39;代码块&#39;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; python</span><br><span class="line">print(&#39;代码块&#39;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-链接"><a href="#7-链接" class="headerlink" title="7. 链接"></a>7. 链接</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">采用![]()表示图片链接</span><br><span class="line">![图片名称](链接地址)</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<p>![测试图片](C:\Users\feixiang\Pictures\Surface\Surface Book - Red.jpg)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">文字链接</span><br><span class="line">- 采用[]()表示文字链接</span><br><span class="line">[链接名称](链接地址)</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hpYW9ZaV9FcmljL2FydGljbGUvZGV0YWlscy83OTYxNTUyNA==">文字链接<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参考链接</span><br><span class="line">- 采用[ ]:表示参考链接，注意符号后有空格</span><br><span class="line">[ ]: url title</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<p>[ ]: <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hpYW9ZaV9FcmljL2FydGljbGUvZGV0YWlscy83OTYxNTUyNA==">https://blog.csdn.net/XiaoYi_Eric/article/details/79615524<i class="fa fa-external-link-alt"></i></span> MarkDown</p>
-<h3 id="8-分割线"><a href="#8-分割线" class="headerlink" title="8. 分割线"></a>8. 分割线</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上下文无关时可使用分隔符进行分开</span><br><span class="line">- 连续多个 - （&gt;&#x3D;3）</span><br><span class="line">- 连续多个 * （&gt;&#x3D;3）</span><br><span class="line">- 连续多个下划线 _ （&gt;&#x3D;3）</span><br></pre></td></tr></table></figure>
-
-<p>如：</p>
-<hr>
-<hr>
-<hr>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Hexo博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MarkDown-语法</title>
+      <link href="/2020/03/29/MarkDown-%E8%AF%AD%E6%B3%95/"/>
+      <url>/2020/03/29/MarkDown-%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure><p>如：</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><a id="more"></a><h3 id="2-字体设置"><a href="#2-字体设置" class="headerlink" title="2. 字体设置"></a>2. 字体设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">** 文字前后加**表示粗体</span><br><span class="line">**粗体**</span><br></pre></td></tr></table></figure><p>如：<strong>粗体</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 文字前后加*表示斜体</span><br><span class="line">*斜体*</span><br></pre></td></tr></table></figure><p>如：<em>斜体</em></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*** 文字前后加***表示粗斜体</span><br><span class="line">***粗斜体***</span><br></pre></td></tr></table></figure><p>如：<strong><em>粗斜体</em></strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt; &lt;&#x2F;u&gt; 文字前后加&lt;u&gt;&lt;&#x2F;u&gt;表示下划线</span><br></pre></td></tr></table></figure><p>如：<u>下划线</u></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~~ 文字前后加~~表示删除线</span><br><span class="line">~~删除线~~</span><br></pre></td></tr></table></figure><p>如：<del>删除线</del></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#96; 文字前后加&#96;表示标记，该符号位于Esc下面，英文状态下符号</span><br><span class="line">&#96;标记&#96;</span><br></pre></td></tr></table></figure><p>如：<code>标记</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Html标签</span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体颜色和大小&lt;&#x2F;font&gt;</span><br></pre></td></tr></table></figure><p>如：<font face="微软雅黑" color="red" size="6">字体颜色和大小</font></p><h3 id="3-列表"><a href="#3-列表" class="headerlink" title="3. 列表"></a>3. 列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">有序列表</span><br><span class="line">- 采用 1. 后加空格形式表示有序列表</span><br><span class="line">1. 有序列表1</span><br><span class="line">2. 有序列表2</span><br><span class="line">3. 有序列表3</span><br></pre></td></tr></table></figure><p>如：</p><ol><li><p>有序列表1</p></li><li><p>有序列表2</p></li><li><p>有序列表3</p></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">无效列表</span><br><span class="line">- 采用+ - * &#x3D; 符号表示无效列表，支持多级嵌套（之间用空格分隔）</span><br><span class="line">+ 无序列表1</span><br><span class="line">+ + 无序列表1.1</span><br><span class="line">+ + 无序列表1.2</span><br><span class="line">+ 无序列表2</span><br><span class="line">+ 无序列表3</span><br></pre></td></tr></table></figure><p>如：</p><ul><li>无序列表1</li><li><ul><li>无序列表1.1</li></ul></li><li><ul><li>无序列表1.2</li></ul></li><li>无序列表2</li><li>无序列表3</li></ul><p>如：</p><ul><li>无序列表1</li><li><ul><li>无序列表1.1</li></ul></li><li>无序列表2</li></ul><p>如：</p><ul><li>无序列表1</li><li><ul><li>无序列表1.1</li></ul></li><li>无序列表2</li></ul><p>如：</p><ul><li>无序列表1</li><li><ul><li><ol><li>有序列表1.1</li></ol></li></ul></li><li><ul><li><ol start="2"><li>有序列表1.2</li></ol></li></ul></li><li>无序列表2</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">未完成列表</span><br><span class="line">- 采用 - [ ] 表示未完成任务，符号之间用空格分隔</span><br><span class="line">- [ ] 未完成任务1</span><br><span class="line">- [ ] 未完成任务2</span><br><span class="line">- [ ] 未完成任务3</span><br></pre></td></tr></table></figure><p>如：</p><ul><li><input disabled="" type="checkbox"> <p>未完成任务1</p></li><li><input disabled="" type="checkbox"> <p>未完成任务2</p></li><li><input disabled="" type="checkbox"> <p>未完成任务3</p></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">已完成任务</span><br><span class="line">- 采用 - [x] 表示已完成任务，各符号之间均有空格，同时可直接在未完成任务间✔来转换成已完成任务</span><br><span class="line">- [x] 已完成任务1</span><br><span class="line">- [x] 已完成任务2</span><br><span class="line">- [x] 已完成任务3</span><br></pre></td></tr></table></figure><p>如：</p><ul><li><input checked="" disabled="" type="checkbox"> 已完成任务1</li><li><input checked="" disabled="" type="checkbox"> 已完成任务2</li><li><input checked="" disabled="" type="checkbox"> 已完成任务3</li></ul><h3 id="4-表格"><a href="#4-表格" class="headerlink" title="4. 表格"></a>4. 表格</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表格对齐方式</span><br><span class="line"> 居左：:----</span><br><span class="line"> 居中：:----: 或 ----</span><br><span class="line"> 居右：-----:</span><br></pre></td></tr></table></figure><table><thead><tr><th align="left">标题1</th><th align="center">标题2</th><th align="right">标题3</th></tr></thead><tbody><tr><td align="left">居左测试文本</td><td align="center">居中测试文本</td><td align="right">居右测试问题</td></tr><tr><td align="left">居左测试文本</td><td align="center">居中测试文本</td><td align="right">居右测试问题</td></tr></tbody></table><h3 id="5-段落-换行"><a href="#5-段落-换行" class="headerlink" title="5. 段落 换行"></a>5. 段落 换行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">首行缩进方式</span><br><span class="line">&amp;emsp; 中文空格</span><br><span class="line">&amp;ensp; 半中文空格</span><br><span class="line">&amp;nbsp; 英文空格</span><br><span class="line">输入法切换全角双击空格</span><br></pre></td></tr></table></figure><p>如：</p><p>&emsp; 中文空格</p><p>&ensp; 半中文空格</p><p>&nbsp; 英文空格</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">换行</span><br><span class="line">- 换行处连续打两个空格</span><br><span class="line">- 换行处使用&lt;br&gt;进行换行</span><br></pre></td></tr></table></figure><p>如：</p><p>  换行  你好<br>hello</p><h3 id="6-引用和代码块"><a href="#6-引用和代码块" class="headerlink" title="6. 引用和代码块"></a>6. 引用和代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">引用</span><br><span class="line">&gt; 引用1</span><br><span class="line">&gt; &gt; 引用1.1</span><br><span class="line">&gt; &gt; 引用1.2</span><br><span class="line">&gt; 引用2</span><br></pre></td></tr></table></figure><p>如：</p><blockquote><p>引用1</p><blockquote><p>应用1.1<br>引用1.2</p></blockquote></blockquote><blockquote><p>引用2</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">代码块</span><br><span class="line">- 代码前后添加&#96;&#96;&#96;表示代码块</span><br><span class="line">      &#96;&#96;&#96;Python</span><br><span class="line">        print(&#39;代码块&#39;)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; python</span><br><span class="line">print(&#39;代码块&#39;)</span><br></pre></td></tr></table></figure><h3 id="7-链接"><a href="#7-链接" class="headerlink" title="7. 链接"></a>7. 链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">采用![]()表示图片链接</span><br><span class="line">![图片名称](链接地址)</span><br></pre></td></tr></table></figure><p>如：</p><p>![测试图片](C:\Users\feixiang\Pictures\Surface\Surface Book - Red.jpg)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">文字链接</span><br><span class="line">- 采用[]()表示文字链接</span><br><span class="line">[链接名称](链接地址)</span><br></pre></td></tr></table></figure><p>如：</p><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hpYW9ZaV9FcmljL2FydGljbGUvZGV0YWlscy83OTYxNTUyNA==">文字链接<i class="fa fa-external-link-alt"></i></span></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">参考链接</span><br><span class="line">- 采用[ ]:表示参考链接，注意符号后有空格</span><br><span class="line">[ ]: url title</span><br></pre></td></tr></table></figure><p>如：</p><p>[ ]: <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hpYW9ZaV9FcmljL2FydGljbGUvZGV0YWlscy83OTYxNTUyNA==">https://blog.csdn.net/XiaoYi_Eric/article/details/79615524<i class="fa fa-external-link-alt"></i></span> MarkDown</p><h3 id="8-分割线"><a href="#8-分割线" class="headerlink" title="8. 分割线"></a>8. 分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">上下文无关时可使用分隔符进行分开</span><br><span class="line">- 连续多个 - （&gt;&#x3D;3）</span><br><span class="line">- 连续多个 * （&gt;&#x3D;3）</span><br><span class="line">- 连续多个下划线 _ （&gt;&#x3D;3）</span><br></pre></td></tr></table></figure><p>如：</p><hr><hr><hr>]]></content>
+      
+      
       <categories>
-        <category>MarkDown</category>
+          
+          <category> MarkDown </category>
+          
       </categories>
-      <tags>
-        <tag>MarkDown</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> MarkDown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://huh32993.gitee.io/tags/index.html</loc>
+    
+    <lastmod>2020-04-11T02:31:45.383Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://huh32993.gitee.io/categories/index.html</loc>
+    
+    <lastmod>2020-04-11T02:31:07.578Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://huh32993.gitee.io/2020/04/11/Dayjs%E6%97%A5%E6%9C%9F%E5%BA%93%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2020-04-11T02:21:51.860Z</lastmod>
@@ -96,20 +110,6 @@
     <loc>http://huh32993.gitee.io/about/index.html</loc>
     
     <lastmod>2020-03-29T14:22:21.165Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://huh32993.gitee.io/tags/index.html</loc>
-    
-    <lastmod>2020-03-29T11:57:11.423Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://huh32993.gitee.io/categories/index.html</loc>
-    
-    <lastmod>2020-03-29T11:55:08.040Z</lastmod>
     
   </url>
   
