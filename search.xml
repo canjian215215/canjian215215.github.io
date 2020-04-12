@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>TTF字体在线编辑工具</title>
+    <url>/2020/04/12/TTF%E5%AD%97%E4%BD%93%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p><strong>百度的一款良心工具，可以使我们在线方便设计TTF、WOFF、WOFF2字体文件</strong></p>
+<a id="more"></a>
+
+<blockquote>
+<p>FontEditor<br>[ FontEditor ]: <span class="exturl" data-url="aHR0cDovL2ZvbnRzdG9yZS5iYWlkdS5jb20vc3RhdGljL2VkaXRvci9pbmRleC5odG1s">http://fontstore.baidu.com/static/editor/index.html<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端工具</category>
+      </categories>
+      <tags>
+        <tag>TTF字体编辑</tag>
+        <tag>WOFF WOFF2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS3实现跳动心形特效</title>
     <url>/2020/04/11/CSS3%E5%AE%9E%E7%8E%B0%E8%B7%B3%E5%8A%A8%E5%BF%83%E5%BD%A2%E7%89%B9%E6%95%88/</url>
     <content><![CDATA[<p><strong>通过CSS3实现炫酷心动特效</strong><br><img src="/uploads/UI/css3-heart.png" alt="CSS3-Heart"></p>
