@@ -117,17 +117,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -187,6 +187,109 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://huh32993.gitee.io/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="飞翔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fly-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/" class="post-title-link" itemprop="url">CNN-卷积神经网络参数计算</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 21:34:43" itemprop="dateCreated datePublished" datetime="2020-03-31T21:34:43+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-10 09:44:55" itemprop="dateModified" datetime="2020-04-10T09:44:55+08:00">2020-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">ML-机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>卷积神经网络中的卷积过程的了解，对整个卷积神经网络的了解至关重要以下是个人认为比较好的入门讲解：</strong></p>
+<blockquote>
+<ul>
+<li>[ 卷积神经网络介绍1 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzI2Ni5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367266.html<i class="fa fa-external-link-alt"></i></span></li>
+<li>[ 卷积神经网络介绍2 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzMxNy5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367317.html<i class="fa fa-external-link-alt"></i></span></li>
+<li>[ 卷积神经网络介绍3 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvODM2NzM0NC5odG1s">https://www.cnblogs.com/hejunlin1992/p/8367344.html<i class="fa fa-external-link-alt"></i></span></li>
+<li>[  卷积基础 ]: <span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3M/X19iaXo9TXpVeU1qRTJNVEUwTXc9PSZhbXA7bWlkPTIyNDc0ODU2MzImYW1wO2lkeD0xJmFtcDtzbj1hMGI4NDJkMzg3Njg1NTY3ZjlmZjk0ZjNiZDE4MzJjMiZhbXA7Y2hrc209ZjlkMTU2NThjZWE2ZGY0ZWQzZjI0ZTQwNzEyMjhiNzgwYTgxMDczMTQ0NzQ0Mjg1NjNlNTYyMTUyYjliZThhYjg0MjhkMWZkNjJiNyZhbXA7c2NlbmU9MjEjd2VjaGF0X3JlZGlyZWN0">https://mp.weixin.qq.com/s?__biz=MzUyMjE2MTE0Mw==&amp;mid=2247485632&amp;idx=1&amp;sn=a0b842d387685567f9ff94f3bd1832c2&amp;chksm=f9d15658cea6df4ed3f24e4071228b780a8107314474428563e562152b9be8ab8428d1fd62b7&amp;scene=21#wechat_redirect<i class="fa fa-external-link-alt"></i></span></li>
+<li>[ 卷积神经网络-卷积与池化 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vemYtYmxvZy9wLzYwNzUyODYuaHRtbA==">https://www.cnblogs.com/zf-blog/p/6075286.html<i class="fa fa-external-link-alt"></i></span></li>
+<li>[ 卷积神经网络中的参数计算 ]: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVqdW5saW4xOTkyL3AvNzYyNDgwNy5odG1s">https://www.cnblogs.com/hejunlin1992/p/7624807.html<i class="fa fa-external-link-alt"></i></span></li>
+<li>[ 卷积神经网络与反卷积 ]: <span class="exturl" data-url="aHR0cHM6Ly9idXB0bGR5LmdpdGh1Yi5pby8yMDE2LzEwLzI5LzIwMTYtMTAtMjktZGVjb252Lw==">https://buptldy.github.io/2016/10/29/2016-10-29-deconv/<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/31/CNN-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        <!-- 首页显示标签
+	    
+		    <div class="post-tags">
+		        
+		            <a href="/" rel="tag"><i class="fa fa-tag"></i> </a>
+		        
+		            <a href="/" rel="tag"><i class="fa fa-tag"></i> </a>
+		        
+		    </div>
+		
+	     首页显示标签 end -->
       
   
   
@@ -909,20 +1012,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
